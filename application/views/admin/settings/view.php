@@ -5,7 +5,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="<?php echo base_url()?>admin">Home</a></li>
-          <li class="breadcrumb-item active"><a href="<?php echo base_url()?>admin/leadaus">Leads List</a></li>
+          <li class="breadcrumb-item active"><a href="<?php echo base_url()?>admin/dashboardaus">Leads List</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->

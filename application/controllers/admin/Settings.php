@@ -192,7 +192,7 @@ class Settings extends BaseController
         $this->isLoggedIn();
         if($id == null)
         {
-            redirect('admin/lead');
+            redirect('admin/dashboard');
         }
 
         
@@ -211,13 +211,13 @@ class Settings extends BaseController
         $this->isLoggedIn();
         if($id == null)
         {
-            redirect('admin/lead');
+            redirect('admin/dashboard');
         }
 
         
         $data['edit_data'] = $this->settings_model->find($id);
         $this->global['pageTitle'] = 'Website Name : View Data';
-        $this->loadViews("admin/leadaus/view", $this->global, $data , NULL);
+        $this->loadViews("admin/dashboardaus/view", $this->global, $data , NULL);
         
         
     } 

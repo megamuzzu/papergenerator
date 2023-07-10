@@ -74,8 +74,6 @@
                           <option>Select Class</option>
                           <option value="<?php echo $studentClassName; ?>"><?php echo $studentClassName; ?></option>
                     </select>
-
-
                   </div>
                 </div>
   

@@ -1255,3 +1255,13 @@ a.addnewbtn {
     padding: 10px;
     border-radius: 6px;
 }
+.school_logo {
+    text-align: center;
+}
+.details-connect {
+    display: inline-flex;
+}
+.img-box img {
+    border: 4px solid black;
+    padding: 10px;
+}

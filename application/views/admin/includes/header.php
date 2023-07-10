@@ -128,14 +128,20 @@
       </li>
 
 
-
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url()?>admin/settings">
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo base_url()?>admin/teacher">
           <i class="bi bi-gear"></i>
-          <span>Settings</span>
+          <span>Teacher</span>
         </a>
       </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?php echo base_url()?>admin/settings">
+            <i class="bi bi-gear"></i>
+            <span>Settings</span>
+          </a>
+        </li>
 
 
       <?php if($this->session->userdata('role') == 1){ ?>

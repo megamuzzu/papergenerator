@@ -2,11 +2,11 @@
 
 
 
-class Subject_model extends Base_model
+class Teacher_model extends Base_model
 {
-    public $table = "subject";
-    var $column_order = array(null,'subject_name','subject_code','class_details','status'); //set column field database for datatable orderable
-    var $column_search = array('subject_name','subject_code','class_details','status'); //set column field database for datatable searchable 
+    public $table = "teacher";
+    var $column_order = array(null,'teacher_name','teacher_id','subject_of_code','phone_no','email_id','photo_teacher','aadhar_details','address_teacher','class_teacher','status','date_by'); //set column field database for datatable orderable
+    var $column_search = array('teacher_name','teacher_id','subject_of_code','phone_no','email_id','photo_teacher','aadhar_details','address_teacher','class_teacher','status','date_by'); //set column field database for datatable searchable 
     var $order = array('id' => 'desc'); // default order
 
         
@@ -160,22 +160,5 @@ class Subject_model extends Base_model
             $result = $this->db->get($this->table)->row();  
             return $result->amount;
         }
-
-      public function getSubjectData() {
-        $this->db->select('classes.student_class_name, subject.*, class_details AS class_data');
-        $this->db->from('subject');
-        $this->db->join('classes', 'classes.id = subject.class_details');
-        $query = $this->db->get();       
-        return $query->result();
-    }
-
-
-        public function getSectionData() {
-        $this->db->select('classes.student_sections_name, subject.*, class_details AS class_data');
-        $this->db->from('subject');
-        $this->db->join('classes', 'classes.id = subject.class_details');
-        $query = $this->db->get();       
-        return $query->result();
-    }
 
 }

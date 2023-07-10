@@ -29,10 +29,10 @@
 
                     <?php if($this->session->userdata('role') == 1){ ?>
                       <li>
-                        <a class="dropdown-item" href="<?php echo base_url()?>admin/lead/addnew">Add New</a>
+                        <a class="dropdown-item" href="<?php echo base_url()?>admin/dashboard/addnew">Add New</a>
                       </li>
                     <?php }?>
-                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/lead">All List</a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/dashboard">All List</a></li>
                   </ul>
                 </div>
 
@@ -82,10 +82,10 @@
 
                     <?php if($this->session->userdata('role') == 1){ ?>
                       <li>
-                        <a class="dropdown-item" href="<?php echo base_url()?>admin/leadaus/addnew">Add New</a>
+                        <a class="dropdown-item" href="<?php echo base_url()?>admin/dashboardaus/addnew">Add New</a>
                       </li>
                     <?php }?>
-                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/leadaus">All List</a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/dashboardaus">All List</a></li>
                   </ul>
                 </div>
 
@@ -164,7 +164,7 @@
                     <li class="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/lead/listpopup">All List</a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/dashboard/listpopup">All List</a></li>
                   </ul>
                 </div>
 
@@ -211,7 +211,7 @@
                     <li class="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/lead/listprinter">All List</a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/dashboard/listprinter">All List</a></li>
                   </ul>
                 </div>
 
@@ -258,7 +258,7 @@
                     <li class="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/leadaus/listpopup">All List</a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/dashboardaus/listpopup">All List</a></li>
                   </ul>
                 </div>
 
@@ -305,7 +305,7 @@
                     <li class="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/leadaus/listprinter">All List</a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url()?>admin/dashboardaus/listprinter">All List</a></li>
                   </ul>
                 </div>
 
@@ -452,7 +452,7 @@
           var userId = $(this).attr("data-id");
           var value  = $(this).val();
 
-            hitURL = "<?php echo base_url() ?>admin/lead/statusChange",
+            hitURL = "<?php echo base_url() ?>admin/dashboard/statusChange",
             currentRow = $(this);
           
             jQuery.ajax({
@@ -475,7 +475,7 @@
          jQuery(document).on("click", ".deletebtn", function(){
 
           var userId = $(this).data("userid"),
-            hitURL = "<?php echo base_url() ?>admin/lead/delete",
+            hitURL = "<?php echo base_url() ?>admin/dashboard/delete",
             currentRow = $(this);
           
           var confirmation = confirm("Are you sure to delete this lead ?");
@@ -516,7 +516,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('admin/lead/ajax_list')?>",
+            "url": "<?php echo site_url('admin/dashboard/ajax_list')?>",
             "type": "POST"
         },
  
@@ -550,7 +550,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('admin/leadaus/ajax_list')?>",
+            "url": "<?php echo site_url('admin/dashboardaus/ajax_list')?>",
             "type": "POST"
         },
  
@@ -575,7 +575,7 @@ $(document).ready(function() {
           var userId = $(this).attr("data-id");
           var value  = $(this).val();
 
-            hitURL = "<?php echo base_url() ?>admin/leadaus/statusChange",
+            hitURL = "<?php echo base_url() ?>admin/dashboardaus/statusChange",
             currentRow = $(this);
           
             jQuery.ajax({
@@ -598,7 +598,7 @@ $(document).ready(function() {
          jQuery(document).on("click", ".deletebtn", function(){
 
           var userId = $(this).data("userid"),
-            hitURL = "<?php echo base_url() ?>admin/leadaus/delete",
+            hitURL = "<?php echo base_url() ?>admin/dashboardaus/delete",
             currentRow = $(this);
           
           var confirmation = confirm("Are you sure to delete this lead ?");

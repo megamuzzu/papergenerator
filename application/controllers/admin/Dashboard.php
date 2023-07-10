@@ -61,7 +61,7 @@ class Dashboard extends BaseController
         //Dashboard Model Data End
 
 
-        //Lead Aus Model Start
+        //dashboard Aus Model Start
 
         $where = array();
         $where['field'] = 'id';  
@@ -90,7 +90,7 @@ class Dashboard extends BaseController
         $lead_money_aus_print =  $this->leadaus_model->sum_all_aus();
         $data['lead_money_aus_print']  = $lead_money_aus_print;
 
-        //Lead Aus Model End
+        //dashboard Aus Model End
 
         $where = array();
         $where['field'] = 'id';  
@@ -223,7 +223,7 @@ class Dashboard extends BaseController
             $row[] = $currentObj->issue;
             $row[] = $currentObj->plan;
             $row[] = $currentObj->agent;
-            $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/lead/edit/'.$currentObj->id.'"><i class="fa fa-pencil"></i></a> <a class="btn btn-sm btn-danger deletebtn" href="#" data-userid="'.$currentObj->id.'"><i class="fa fa-trash"></i></a>';
+            $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/dashboard/edit/'.$currentObj->id.'"><i class="fa fa-pencil"></i></a> <a class="btn btn-sm btn-danger deletebtn" href="#" data-userid="'.$currentObj->id.'"><i class="fa fa-trash"></i></a>';
             $data[] = $row;
         }
  
