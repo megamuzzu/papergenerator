@@ -130,7 +130,7 @@
 
         <li class="nav-item">
         <a class="nav-link collapsed" href="<?php echo base_url()?>admin/teacher">
-          <i class="bi bi-gear"></i>
+          <i class="bi bi-person"></i>
           <span>Teacher</span>
         </a>
       </li>
