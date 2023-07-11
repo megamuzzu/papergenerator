@@ -22,32 +22,57 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="school_logo">
-                      <img src="<?php echo base_url()?>assets/admin/img/school-logo.png">
-                      <h4>Infant Jesus' School</h4>
+
+                         <?php
+                              foreach ($school_data as $key => $value)
+                              {
+                                  $logo = $value->logo  != null ? $value->logo: 'School Logo';
+                      ?>
+
+                      <img src="<?php echo base_url()?>uploads/school/<?php echo $logo?>" style="width: 50%;">
+                      <h4><?php echo $value->school_name;?></h4>
                       <div class="details-connect">
-                        <p>support@demo.com </p> | 
-                        <p> +91-8878767867</p>
+                        <p><?php echo $value->email_id;?></p> | 
+                        <p> <?php echo $value->phone_no;?></p>
                       </div>
-                      <p>Antariksh Golf View-1, Noida, Uttar Pradesh, 273001, India</p>
+                      <p><?php echo $value->address;?></p>
+
+                      <?php
+
+                    }
+
+                        ?>
+
                     </div>
                     <div class="teacher-details mt-5">
+                  
+
+                      <?php
+                              foreach ($teacher_data as $key => $value)
+                              {
+                                  $photo_teacher = $value->photo_teacher  != null ? $value->photo_teacher: 'Teacher Image';
+                      ?>
+
                       <div class="row">
                         <div class="col-lg-3 offset-lg-1">
                           <div class="img-box">
-                            <img src="<?php echo base_url()?>assets/admin/img/school-logo.png">
+                            <img src="<?php echo base_url()?>uploads/teacher/<?php echo $photo_teacher?>">
                           </div>
                         </div>
                         <div class="col-lg-8">
-                          <p>Teacher ID : M001</p>
-                          <p>Teacher Name : Ramesh Kumar</p>
-                          <p>Teacher Subject : English</p>
-                          <p>Phone No : +91-9876789876</p>
-                          <p>Email ID : support@demo.com</p>
-                          <p>Aadhar Details : 986789657896</p>
-                          <p>Class Teacher : 3A</p>
-                          <p>Teacher Address : Antariksh Golf View-1, Noida, Uttar Pradesh, 273001, India</p>
+                          <p>Teacher ID : <?php echo $value->teacher_id;?></p>
+                          <p>Teacher Name : <?php echo $value->teacher_name;?></p>
+                          <p>Teacher Subject : <?php echo $value->subject_of_teacher;?></p>
+                          <p>Phone No : <?php echo $value->phone_no;?></p>
+                          <p>Email ID : <?php echo $value->email_id;?></p>
+                          <p>Aadhar Details : <?php echo $value->aadhar_details;?></p>
+                          <p>Class Teacher : <?php echo $value->class_teacher;?> - <?php echo $value->class_section;?></p>
+                          <p>Teacher Address : <?php echo $value->address_teacher;?></p>
                         </div>
                       </div>
+                      <?php
+                           }
+                      ?>
                     </div>
                   </div>
                 </div>
@@ -59,7 +84,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

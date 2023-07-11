@@ -1264,4 +1264,9 @@ a.addnewbtn {
 .img-box img {
     border: 4px solid black;
     padding: 10px;
+    width: 50%;
+}
+
+.col-sm-12.line-by-line {
+    display: inline-flex;
 }

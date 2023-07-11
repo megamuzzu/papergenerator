@@ -10,6 +10,7 @@ class Teacher extends BaseController
         parent::__construct();
         $this->load->model('admin/teacher_model');
         $this->load->model('admin/subject_model');
+        $this->load->model('admin/settings_model');
     }
 
     /**
@@ -220,6 +221,15 @@ class Teacher extends BaseController
         {
             redirect('admin/dashboard');
         }
+
+        $where = array();
+        $where['table'] = 'teacher';
+        $where['id'] = $id;
+        $data['teacher_data'] = $this->subject_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'settings';
+        $data['school_data'] = $this->settings_model->findDynamic($where);
 
         
         $data['edit_data'] = $this->teacher_model->find($id);

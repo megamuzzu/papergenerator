@@ -93,13 +93,24 @@
         </a>
       </li>
 
-
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url()?>admin">
-          <i class="bi bi-question-square-fill"></i>
-          <span>Questions Blueprint</span>
+        <a class="nav-link collapsed" data-bs-target="#tables-navs" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-question-square-fill"></i><span>Questions Blueprint</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
+        <ul id="tables-navs" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="<?php echo base_url()?>admin/blueprint/addnew">
+              <i class="bi bi-circle"></i><span>Add New Blueprint</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo base_url()?>admin/blueprint">
+              <i class="bi bi-circle"></i><span>Blueprint List</span>
+            </a>
+          </li>
+        </ul>
       </li>
+
 
      
         <li class="nav-item">
