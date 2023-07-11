@@ -1,14 +1,14 @@
 <main id="main" class="main">
 
- <div class="pagetitle">
-      <h1>Subject Data</h1>
+  <div class="pagetitle">
+      <h1>Question Blueprint</h1>
       <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?php echo base_url()?>admin">Home</a></li>
-          <li class="breadcrumb-item active"><a href="<?php echo base_url()?>admin/subject">Subject List</a></li>
-        </ol>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo base_url()?>admin">Home</a></li>
+            <li class="breadcrumb-item active"><a href="<?php echo base_url()?>admin/blueprint">Question Blueprint</a></li>
+         </ol>
       </nav>
-    </div><!-- End Page Title -->
+   </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
@@ -51,32 +51,45 @@
             </div>
 
               <!-- General Form Elements -->
-              <form role="form" action="<?php echo base_url() ?>admin/subject/update" method="post" role="form" enctype="multipart/form-data">
+              <form role="form" action="<?php echo base_url() ?>admin/blueprint/update" method="post" role="form" enctype="multipart/form-data">
 
-                <div class="row mb-3">
-                  <input type="hidden" name="id" value="<?php echo $edit_data->id;?>"/>
-                  <label for="inputText" class="col-sm-2 col-form-label">Subject Name</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="subject_name" class="form-control" value="<?php echo $edit_data->subject_name;?>">
-                  </div>
-                </div>
+           
 
                <div class="row mb-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">Subject Code</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="subject_code" class="form-control" value="<?php echo $edit_data->subject_code;?>">
-                  </div>
-                </div>
+                    <input type="hidden" name="id" value="<?php echo $edit_data->id;?>"/>
+                        <label for="inputText" class="col-sm-2 col-form-label">Question Paper Name</label>
+                        <div class="col-sm-10">
+                           <input type="text" name="question_paper_name" class="form-control" value="<?php echo $edit_data->question_paper_name;?>">
+                        </div>
+                     </div>
 
-                <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Class Name</label>
-                  <div class="col-sm-10">
-                    <select class="form-select" name="class_details" aria-label="Default select example">
-                          <option>Select Class</option>
-                          <option value="<?php echo $studentClassName; ?>" <?php echo ($edit_data->class_details == $edit_data->class_details)?'selected':'';?>  ><?php echo $studentClassName; ?></option>
-                    </select>
-                  </div>
-                </div>
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Subject Name</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="subject_name" aria-label="Default select example">
+                              <option selected>Select Subject</option>
+                              <option value="<?php echo $subject_name; ?>" <?php echo ($edit_data->subject_name == $edit_data->subject_name)?'selected':'';?>  ><?php echo $subject_name; ?></option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Subject Code</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="subject_code" aria-label="Default select example">
+                              <option selected>Select Subject Code</option>
+                              <option value="<?php echo $subject_code; ?>" <?php echo ($edit_data->subject_code == $edit_data->subject_code)?'selected':'';?>  ><?php echo $subject_code; ?></option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Class Name</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="class_name" aria-label="Default select example">
+                              <option selected>Select Class</option>
+                               <option value="<?php echo $class_name; ?>" <?php echo ($edit_data->class_name == $edit_data->class_name)?'selected':'';?>  ><?php echo $class_name; ?></option>
+                           </select>
+                        </div>
+                     </div>
               
 
                 <div class="row mb-3">
@@ -85,7 +98,7 @@
                     <select class="form-select" name="status" aria-label="Default select example">
                       <option>Select Status</option>
                       <option value="1" <?php echo ($edit_data->status == 1)?'selected':'';?>>Active</option>
-                      <option value="2" <?php echo ($edit_data->status == 2)?'selected':'';?>>Inactive</option>
+                      <option value="0" <?php echo ($edit_data->status == 0)?'selected':'';?>>Inactive</option>
                     </select>
                   </div>
                 </div>

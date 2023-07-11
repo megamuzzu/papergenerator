@@ -116,10 +116,10 @@ class Blueprint extends BaseController
             $row[] = $currentObj->class_name;
             $row[] = $btn;
             if($this->session->userdata('role') == 1){ 
-            $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/question/edit/'.$currentObj->id.'">Edit</a>
+            $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/blueprint/edit/'.$currentObj->id.'">Edit</a>
             <a class="btn btn-sm btn-danger deletebtn" href="#" data-userid="'.$currentObj->id.'">Delete</a>';
             }
-            $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/question/view/'.$currentObj->id.'">Add Question</a>';
+            $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/blueprint/view/'.$currentObj->id.'">Add Question</a>';
             $data[] = $row;
         }
  
@@ -165,6 +165,18 @@ class Blueprint extends BaseController
             redirect('admin/dashboard');
         }
 
+        $where = array();
+        $where['table'] = 'subject';
+        $data['subject_data'] = $this->subject_model->findDynamic($where);
+        $data['subject_name'] = $data['subject_data'][0]->subject_name;
+        $data['subject_code'] = $data['subject_data'][0]->subject_code;
+
+
+        $where = array();
+        $where['table'] = 'classes';
+        $data['class_data'] = $this->classes_model->findDynamic($where);
+        $data['class_name'] = $data['class_data'][0]->student_class_name;
+
         
         $data['edit_data'] = $this->blueprint_model->find($id);
         $this->global['pageTitle'] = 'Website Name : Edit Data';
@@ -197,7 +209,10 @@ class Blueprint extends BaseController
     {
         $this->isLoggedIn();
         $this->load->library('form_validation');                 
-        $this->form_validation->set_rules('school_name','School Name','required');
+        $this->form_validation->set_rules('question_paper_name','Question Paper Name','required');
+        $this->form_validation->set_rules('subject_code','Subject Code','required');
+        $this->form_validation->set_rules('subject_name','Subject Name','required');
+        $this->form_validation->set_rules('class_name','Class Name','required');
         
         
         //form data 
@@ -211,66 +226,24 @@ class Blueprint extends BaseController
 
                 
             $insertData['id'] = $form_data['id'];
-            $insertData['school_name'] = $form_data['school_name'];
-            $insertData['phone_no'] = $form_data['phone_no'];
-            $insertData['email_id'] = $form_data['email_id'];
-            $insertData['address'] = $form_data['address'];
+            $insertData['question_paper_name'] = $form_data['question_paper_name'];
+            $insertData['subject_name'] = $form_data['subject_name'];
+            $insertData['subject_code'] = $form_data['subject_code'];
+            $insertData['class_name'] = $form_data['class_name'];
             $insertData['status'] = $form_data['status'];
             $insertData['date_by']      = date('Y-m-d');
-
-                if(isset($_FILES['logo']['name']) && $_FILES['logo']['name'] != '') {
-
-                $f_name         =$_FILES['logo']['name'];
-                $f_tmp          =$_FILES['logo']['tmp_name'];
-                $f_size         =$_FILES['logo']['size'];
-                $f_extension    =explode('.',$f_name);
-                $f_extension    =strtolower(end($f_extension));
-                $f_newfile      =uniqid().'.'.$f_extension;
-                $store          ="uploads/school/".$f_newfile;
-            
-                if(!move_uploaded_file($f_tmp,$store))
-                {
-                    $this->session->set_flashdata('error', 'Image Upload Failed .');
-                }
-                else
-                {
-                   $insertData['logo'] = $f_newfile;
-                   
-                }
-             }
-
-             if(isset($_FILES['watermark']['name']) && $_FILES['watermark']['name'] != '') {
-
-                $f_name         =$_FILES['watermark']['name'];
-                $f_tmp          =$_FILES['watermark']['tmp_name'];
-                $f_size         =$_FILES['watermark']['size'];
-                $f_extension    =explode('.',$f_name);
-                $f_extension    =strtolower(end($f_extension));
-                $f_newfile      =uniqid().'.'.$f_extension;
-                $store          ="uploads/school/".$f_newfile;
-            
-                if(!move_uploaded_file($f_tmp,$store))
-                {
-                    $this->session->set_flashdata('error', 'Image Upload Failed .');
-                }
-                else
-                {
-                   $insertData['watermark'] = $f_newfile;
-                   
-                }
-             }
 
             $result = $this->blueprint_model->save($insertData);
 
             if($result > 0)
             {
-                $this->session->set_flashdata('success', 'Lead successfully Updated');
+                $this->session->set_flashdata('success', 'Blueprint successfully Updated');
             }
             else
             { 
-                $this->session->set_flashdata('error', 'Lead Updation failed');
+                $this->session->set_flashdata('error', 'Blueprint Updation failed');
             }
-            redirect('admin/question/edit/'.$insertData['id']);
+            redirect('admin/blueprint/edit/'.$insertData['id']);
           }  
         
     }
