@@ -135,6 +135,11 @@
               <i class="bi bi-circle"></i><span>Subjects Details</span>
             </a>
           </li>
+          <li>
+            <a href="<?php echo base_url()?>admin/term">
+              <i class="bi bi-circle"></i><span>School Terms</span>
+            </a>
+          </li>
         </ul>
       </li>
 
