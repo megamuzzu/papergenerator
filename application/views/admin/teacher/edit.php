@@ -71,12 +71,14 @@
                   </div>
                 </div>
 
-                <div class="row mb-3">
+                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Subject Of Teacher</label>
                   <div class="col-sm-10">
                     <select class="form-select" name="subject_of_teacher" aria-label="Default select example">
-                          <option>Select Subject</option>
-                          <option value="<?php echo $subject_name; ?>" <?php echo ($edit_data->subject_of_teacher == $edit_data->subject_of_teacher)?'selected':'';?>  ><?php echo $subject_name; ?></option>
+                         <option>Select Subject</option>
+                          <?php foreach ($subject_name as $sub): ?>
+                          <option value="<?php echo $sub->subject_name; ?>"><?php echo $sub->subject_name; ?></option>
+                        <?php endforeach; ?>
                     </select>
                   </div>
                 </div>
@@ -122,18 +124,24 @@
                   <label class="col-sm-2 col-form-label">Class Teacher</label>
                   <div class="col-sm-10">
                     <select class="form-select" name="class_teacher" aria-label="Default select example">
-                          <option>Select Class</option>
-                          <option value="<?php echo $studentClassName; ?>" <?php echo ($edit_data->class_teacher == $edit_data->class_teacher)?'selected':'';?>  ><?php echo $studentClassName; ?></option>
+                        <option>Select Class</option>
+                          <?php foreach ($studentClassName as $class): ?>
+                          <option value="<?php echo $class->student_class_name; ?>"><?php echo $class->student_class_name; ?></option>
+                        <?php endforeach; ?>
                     </select>
                   </div>
                 </div>
 
+        
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Class Section</label>
                   <div class="col-sm-10">
                     <select class="form-select" name="class_section" aria-label="Default select example">
-                          <option>Select Section</option>
-                          <option value="<?php echo $studentSectionName; ?>" <?php echo ($edit_data->class_section == $edit_data->class_section)?'selected':'';?>  ><?php echo $studentSectionName; ?></option>
+                           <option>Select Class</option>
+                          <?php foreach ($studentSectionName as $section): ?>
+                          <option value="<?php echo $section->student_sections_name; ?>"><?php echo $section->student_sections_name; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     </select>
                   </div>
                 </div>
@@ -160,7 +168,7 @@
                     <select class="form-select" name="status" aria-label="Default select example">
                       <option>Select Status</option>
                       <option value="1" <?php echo ($edit_data->status == 1)?'selected':'';?>>Active</option>
-                      <option value="2" <?php echo ($edit_data->status == 2)?'selected':'';?>>Inactive</option>
+                      <option value="0" <?php echo ($edit_data->status == 0)?'selected':'';?>>Inactive</option>
                     </select>
                   </div>
                 </div>

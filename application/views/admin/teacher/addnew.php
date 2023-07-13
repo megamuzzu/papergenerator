@@ -66,16 +66,20 @@
                     <input type="text" name="teacher_name" class="form-control">
                   </div>
                 </div>
+ 
 
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Subject Of Teacher</label>
                   <div class="col-sm-10">
                     <select class="form-select" name="subject_of_teacher" aria-label="Default select example">
-                          <option>Select Subject</option>
-                          <option value="<?php echo $subject_name; ?>"><?php echo $subject_name; ?></option>
+                         <option>Select Subject</option>
+                          <?php foreach ($subject_name as $sub): ?>
+                          <option value="<?php echo $sub->subject_name; ?>"><?php echo $sub->subject_name; ?></option>
+                        <?php endforeach; ?>
                     </select>
                   </div>
                 </div>
+
 
                   <div class="row mb-3">
                   <label for="inputEmail" class="col-sm-2 col-form-label">Phone No</label>
@@ -112,24 +116,30 @@
                     <textarea class="form-control" name="address_teacher"></textarea>
                   </div>
                 </div>
-
+ 
 
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Class Teacher</label>
                   <div class="col-sm-10">
                     <select class="form-select" name="class_teacher" aria-label="Default select example">
-                          <option>Select Class</option>
-                          <option value="<?php echo $studentClassName; ?>"><?php echo $studentClassName; ?></option>
+                        <option>Select Class</option>
+                          <?php foreach ($studentClassName as $class): ?>
+                          <option value="<?php echo $class->student_class_name; ?>"><?php echo $class->student_class_name; ?></option>
+                        <?php endforeach; ?>
                     </select>
                   </div>
                 </div>
 
+        
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Class Section</label>
                   <div class="col-sm-10">
                     <select class="form-select" name="class_section" aria-label="Default select example">
-                          <option>Select Section</option>
-                          <option value="<?php echo $studentSectionName; ?>"><?php echo $studentSectionName; ?></option>
+                           <option>Select Class</option>
+                          <?php foreach ($studentSectionName as $section): ?>
+                          <option value="<?php echo $section->student_sections_name; ?>"><?php echo $section->student_sections_name; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     </select>
                   </div>
                 </div>

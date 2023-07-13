@@ -56,9 +56,10 @@
                         <label class="col-sm-2 col-form-label">Subject Name</label>
                         <div class="col-sm-10">
                            <select class="form-select" name="subject_name" aria-label="Default select example">
-                              <option selected>Select Subject</option>
-                              <option value="<?php echo $subject_name; ?>"><?php echo $subject_name; ?></option>
-
+                              <option>Select Subject</option>
+                          <?php foreach ($subject_name as $sub): ?>
+                          <option value="<?php echo $sub->subject_name; ?>"><?php echo $sub->subject_name; ?></option>
+                        <?php endforeach; ?>
                            </select>
                         </div>
                      </div>
@@ -66,8 +67,10 @@
                         <label class="col-sm-2 col-form-label">Subject Code</label>
                         <div class="col-sm-10">
                            <select class="form-select" name="subject_code" aria-label="Default select example">
-                              <option selected>Select Subject Code</option>
-                              <option value="<?php echo $subject_code;?>"><?php echo $subject_code;?></option>
+                              <option>Select Subject Code</option>
+                          <?php foreach ($subject_code as $sub): ?>
+                          <option value="<?php echo $sub->subject_code; ?>"><?php echo $sub->subject_code; ?></option>
+                        <?php endforeach; ?>
                            </select>
                         </div>
                      </div>
@@ -75,8 +78,10 @@
                         <label class="col-sm-2 col-form-label">Class Name</label>
                         <div class="col-sm-10">
                            <select class="form-select" name="class_name" aria-label="Default select example">
-                              <option selected>Select Class</option>
-                              <option value="<?php echo $class_name;?>"><?php echo $class_name;?></option>
+                              <option>Select Class</option>
+                          <?php foreach ($studentClassName as $class): ?>
+                          <option value="<?php echo $class->student_class_name; ?>"><?php echo $class->student_class_name; ?></option>
+                        <?php endforeach; ?>
                            </select>
                         </div>
                      </div>

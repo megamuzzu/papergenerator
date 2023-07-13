@@ -67,12 +67,15 @@
                   </div>
                 </div>
 
+
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Class Name</label>
                   <div class="col-sm-10">
                     <select class="form-select" name="class_details" aria-label="Default select example">
-                          <option>Select Class</option>
-                          <option value="<?php echo $studentClassName; ?>"><?php echo $studentClassName; ?></option>
+                        <option>Select Class</option>
+                          <?php foreach ($studentClassName as $class): ?>
+                          <option value="<?php echo $class->student_class_name; ?>"><?php echo $class->student_class_name; ?></option>
+                        <?php endforeach; ?>
                     </select>
                   </div>
                 </div>

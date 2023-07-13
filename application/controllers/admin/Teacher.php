@@ -11,6 +11,7 @@ class Teacher extends BaseController
         $this->load->model('admin/teacher_model');
         $this->load->model('admin/subject_model');
         $this->load->model('admin/settings_model');
+        $this->load->model('admin/classes_model');
     }
 
     /**
@@ -28,16 +29,22 @@ class Teacher extends BaseController
     public function addnew()
     {
         
+         
+
         $where = array();
         $where['table'] = 'subject';
-        $data['subject_data'] = $this->subject_model->findDynamic($where);
-        $data['subject_name'] = $data['subject_data'][0]->subject_name;
+        $where['field'] = 'subject_name';
+        $data['subject_name'] = $this->subject_model->findDynamic($where);
 
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_class_name';
+        $data['studentClassName'] = $this->classes_model->findDynamic($where);
 
-        $data['apple'] = $this->subject_model->getSubjectData();
-        $data['studentClassName'] = $data['apple'][0]->student_class_name;
-        $data['section_point'] = $this->subject_model->getSectionData();
-        $data['studentSectionName'] = $data['section_point'][0]->student_sections_name;
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_sections_name';
+        $data['studentSectionName'] = $this->classes_model->findDynamic($where);
 
         $this->isLoggedIn();
         $this->global['pageTitle'] = 'Website Name : Add New';
@@ -195,14 +202,18 @@ class Teacher extends BaseController
 
         $where = array();
         $where['table'] = 'subject';
-        $data['subject_data'] = $this->subject_model->findDynamic($where);
-        $data['subject_name'] = $data['subject_data'][0]->subject_name;
+        $where['field'] = 'subject_name';
+        $data['subject_name'] = $this->subject_model->findDynamic($where);
 
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_class_name';
+        $data['studentClassName'] = $this->classes_model->findDynamic($where);
 
-        $data['apple'] = $this->subject_model->getSubjectData();
-        $data['studentClassName'] = $data['apple'][0]->student_class_name;
-        $data['section_point'] = $this->subject_model->getSectionData();
-        $data['studentSectionName'] = $data['section_point'][0]->student_sections_name;
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_sections_name';
+        $data['studentSectionName'] = $this->classes_model->findDynamic($where);
         
         $data['edit_data'] = $this->teacher_model->find($id);
         $this->global['pageTitle'] = 'Website Name : Edit Data';

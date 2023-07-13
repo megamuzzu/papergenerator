@@ -9,6 +9,7 @@ class Subject extends BaseController
     {
         parent::__construct();
         $this->load->model('admin/subject_model');
+        $this->load->model('admin/classes_model');
     }
 
     /**
@@ -25,8 +26,11 @@ class Subject extends BaseController
     public function addnew()
     {
         
-        $data['apple'] = $this->subject_model->getSubjectData();
-        $data['studentClassName'] = $data['apple'][0]->student_class_name;
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_class_name';
+        $data['studentClassName'] = $this->subject_model->findDynamic($where);
+
 
         $this->isLoggedIn();
         $this->global['pageTitle'] = 'Website Name : Add New';
@@ -150,8 +154,10 @@ class Subject extends BaseController
             redirect('admin/subject');
         }
 
-        $data['apple'] = $this->subject_model->getSubjectData();
-        $data['studentClassName'] = $data['apple'][0]->student_class_name;
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_class_name';
+        $data['studentClassName'] = $this->subject_model->findDynamic($where);
         
         $data['edit_data'] = $this->subject_model->find($id);
         $this->global['pageTitle'] = 'Website Name : Edit Data';
@@ -160,24 +166,7 @@ class Subject extends BaseController
         
     } 
 
-
-     public function view($id = NULL)
-    {
-        
-        //exit;
-        $this->isLoggedIn();
-        if($id == null)
-        {
-            redirect('admin/dashboard');
-        }
-
-        
-        $data['edit_data'] = $this->subject_model->find($id);
-        $this->global['pageTitle'] = 'Website Name : View Data';
-        $this->loadViews("admin/dashboardaus/view", $this->global, $data , NULL);
-        
-        
-    } 
+ 
 
     // Update Members *************************************************************
     public function update()

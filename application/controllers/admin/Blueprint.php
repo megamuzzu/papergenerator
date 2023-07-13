@@ -30,16 +30,19 @@ class Blueprint extends BaseController
     {
         
         $where = array();
-        $where['table'] = 'subject';
-        $data['subject_data'] = $this->subject_model->findDynamic($where);
-        $data['subject_name'] = $data['subject_data'][0]->subject_name;
-        $data['subject_code'] = $data['subject_data'][0]->subject_code;
-
+        $where['table'] = 'classes';
+        $where['field'] = 'student_class_name';
+        $data['studentClassName'] = $this->classes_model->findDynamic($where);
 
         $where = array();
-        $where['table'] = 'classes';
-        $data['class_data'] = $this->classes_model->findDynamic($where);
-        $data['class_name'] = $data['class_data'][0]->student_class_name;
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_name';
+        $data['subject_name'] = $this->subject_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_code';
+        $data['subject_code'] = $this->subject_model->findDynamic($where);
 
         $this->isLoggedIn();
         $this->global['pageTitle'] = 'Website Name : Add New';
@@ -202,16 +205,19 @@ class Blueprint extends BaseController
         }
 
         $where = array();
-        $where['table'] = 'subject';
-        $data['subject_data'] = $this->subject_model->findDynamic($where);
-        $data['subject_name'] = $data['subject_data'][0]->subject_name;
-        $data['subject_code'] = $data['subject_data'][0]->subject_code;
-
+        $where['table'] = 'classes';
+        $where['field'] = 'student_class_name';
+        $data['studentClassName'] = $this->classes_model->findDynamic($where);
 
         $where = array();
-        $where['table'] = 'classes';
-        $data['class_data'] = $this->classes_model->findDynamic($where);
-        $data['class_name'] = $data['class_data'][0]->student_class_name;
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_name';
+        $data['subject_name'] = $this->subject_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_code';
+        $data['subject_code'] = $this->subject_model->findDynamic($where);
 
         
         $data['edit_data'] = $this->blueprint_model->find($id);

@@ -74,7 +74,7 @@
                     <select class="form-select" name="status" aria-label="Default select example">
                       <option>Select Status</option>
                       <option value="1" <?php echo ($edit_data->status == 1)?'selected':'';?>>Active</option>
-                      <option value="2" <?php echo ($edit_data->status == 2)?'selected':'';?>>Inactive</option>
+                      <option value="0" <?php echo ($edit_data->status == 0)?'selected':'';?>>Inactive</option>
                     </select>
                   </div>
                 </div>
