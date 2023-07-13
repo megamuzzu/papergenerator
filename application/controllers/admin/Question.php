@@ -206,7 +206,7 @@ class Question extends BaseController
             { 
                 $this->session->set_flashdata('error', 'Question Addition failed');
             }
-            redirect('admin/blueprint/');
+            redirect('admin/blueprint/addblueprint/'.$insertData['blueprint_id']);
           }  
         
     }
