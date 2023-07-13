@@ -54,6 +54,9 @@ class Blueprint extends BaseController
     {
         $this->isLoggedIn();
 
+        $delId = $this->input->post('id');  
+        $result = $this->question_model->delete($delId);     
+
         $where = array();
         $where['table'] = 'subject';
         $data['subject_data'] = $this->subject_model->findDynamic($where);
@@ -228,7 +231,8 @@ class Blueprint extends BaseController
     } 
 
 
-     public function view($id = NULL)
+
+     public function editquestion($id = NULL)
     {
         
         //exit;
@@ -238,13 +242,33 @@ class Blueprint extends BaseController
             redirect('admin/dashboard');
         }
 
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_class_name';
+        $data['studentClassName'] = $this->classes_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_name';
+        $data['subject_name'] = $this->subject_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_code';
+        $data['subject_code'] = $this->subject_model->findDynamic($where);
+
         
-        $data['edit_data'] = $this->blueprint_model->find($id);
-        $this->global['pageTitle'] = 'Website Name : View Data';
-        $this->loadViews("admin/dashboardaus/view", $this->global, $data , NULL);
+        $data['edit_data'] = $this->question_model->find($id);
+        $this->global['pageTitle'] = 'Website Name : Edit Data';
+        $this->loadViews("admin/question/editquestion", $this->global, $data , NULL);
         
         
     } 
+
+
+
+
+ 
 
     // Update Members *************************************************************
     public function update()
@@ -339,6 +363,9 @@ class Blueprint extends BaseController
         else { echo(json_encode(array('status'=>FALSE))); }
     }
     
+
+
+
     
 }
 
