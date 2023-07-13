@@ -2,15 +2,14 @@
 
 require APPPATH . '/libraries/BaseController.php';
 
-class Blueprint extends BaseController
+class Question extends BaseController
 {
 
     public function __construct()
     {
         parent::__construct();
         $this->load->model('admin/blueprint_model');
-        $this->load->model('admin/subject_model');
-        $this->load->model('admin/classes_model');
+        $this->load->model('admin/question_model');
     }
 
     /**
@@ -28,57 +27,23 @@ class Blueprint extends BaseController
     public function addnew()
     {
         
-        $where = array();
-        $where['table'] = 'subject';
-        $data['subject_data'] = $this->subject_model->findDynamic($where);
-        $data['subject_name'] = $data['subject_data'][0]->subject_name;
-        $data['subject_code'] = $data['subject_data'][0]->subject_code;
-
-
-        $where = array();
-        $where['table'] = 'classes';
-        $data['class_data'] = $this->classes_model->findDynamic($where);
-        $data['class_name'] = $data['class_data'][0]->student_class_name;
+         
 
         $this->isLoggedIn();
         $this->global['pageTitle'] = 'Website Name : Add New';
-        $this->loadViews("admin/question/addnew", $this->global, $data , NULL);
+        $this->loadViews("admin/question/addblueprint", $this->global, NULL , NULL);
         
     } 
-
-    public function addblueprint()
-    {
-        
-        $where = array();
-        $where['table'] = 'subject';
-        $data['subject_data'] = $this->subject_model->findDynamic($where);
-        $data['subject_name'] = $data['subject_data'][0]->subject_name;
-        $data['subject_code'] = $data['subject_data'][0]->subject_code;
-
-
-        $where = array();
-        $where['table'] = 'classes';
-        $data['class_data'] = $this->classes_model->findDynamic($where);
-        $data['class_name'] = $data['class_data'][0]->student_class_name;
-
-        $this->isLoggedIn();
-        $this->global['pageTitle'] = 'Website Name : Add New';
-        $this->loadViews("admin/question/addblueprint", $this->global, $data , NULL);
-        
-    } 
-
 
     // Insert Member *************************************************************
     public function insertnow()
     {
         $this->isLoggedIn();
-         $form_data  = $this->input->post();
+        $form_data  = $this->input->post();
+        $this->form_validation->set_rules('question_type','Question Type','required');
+        $this->form_validation->set_rules('status','Status','required');
          
-        $this->load->library('form_validation');                 
-        $this->form_validation->set_rules('question_paper_name','Question Paper Name','required');
-        $this->form_validation->set_rules('subject_code','Subject Code','required');
-        $this->form_validation->set_rules('subject_name','Subject Name','required');
-        $this->form_validation->set_rules('class_name','Class Name','required');
+        $this->load->library('form_validation');    
         
         
         //form data 
@@ -89,23 +54,159 @@ class Blueprint extends BaseController
         }
         else
         {   
-                $insertData['question_paper_name'] = $form_data['question_paper_name'];
-                $insertData['subject_name'] = $form_data['subject_name'];
-                $insertData['subject_code'] = $form_data['subject_code'];
-                $insertData['class_name'] = $form_data['class_name'];
+                $insertData['question_type'] = $form_data['question_type'];
+
+                $insertData['question_fitb'] = $form_data['question_fitb'];
+                $insertData['answer_fitb'] = $form_data['answer_fitb'];
+
+                $insertData['question_qa'] = $form_data['question_qa'];
+                $insertData['answer_qa'] = $form_data['answer_qa'];
+
+
+                $insertData['question_tf'] = $form_data['question_tf'];
+                $insertData['answer_true'] = $form_data['answer_true'];
+                $insertData['answer_false'] = $form_data['answer_false'];
+
+
+                $insertData['question_mcq'] = $form_data['question_mcq'];
+                $insertData['answer_mcq_one'] = $form_data['answer_mcq_one'];
+                $insertData['answer_mcq_two'] = $form_data['answer_mcq_two'];
+                $insertData['answer_mcq_three'] = $form_data['answer_mcq_three'];
+                $insertData['answer_mcq_four'] = $form_data['answer_mcq_four'];
+
+
+                $insertData['question_picture_mcq'] = $form_data['question_picture_mcq'];
+
+                if(isset($_FILES['mcq_picture_one']['name']) && $_FILES['mcq_picture_one']['name'] != '') {
+
+                $f_name         =$_FILES['mcq_picture_one']['name'];
+                $f_tmp          =$_FILES['mcq_picture_one']['tmp_name'];
+                $f_size         =$_FILES['mcq_picture_one']['size'];
+                $f_extension    =explode('.',$f_name);
+                $f_extension    =strtolower(end($f_extension));
+                $f_newfile      =uniqid().'.'.$f_extension;
+                $store          ="uploads/questiomcq/".$f_newfile;
+            
+                if(!move_uploaded_file($f_tmp,$store))
+                {
+                    $this->session->set_flashdata('error', 'Image Upload Failed .');
+                }
+                else
+                {
+                   $insertData['mcq_picture_one'] = $f_newfile;
+                   
+                }
+             }
+
+
+
+             if(isset($_FILES['mcq_picture_two']['name']) && $_FILES['mcq_picture_two']['name'] != '') {
+
+                $f_name         =$_FILES['mcq_picture_two']['name'];
+                $f_tmp          =$_FILES['mcq_picture_two']['tmp_name'];
+                $f_size         =$_FILES['mcq_picture_two']['size'];
+                $f_extension    =explode('.',$f_name);
+                $f_extension    =strtolower(end($f_extension));
+                $f_newfile      =uniqid().'.'.$f_extension;
+                $store          ="uploads/questiomcq/".$f_newfile;
+            
+                if(!move_uploaded_file($f_tmp,$store))
+                {
+                    $this->session->set_flashdata('error', 'Image Upload Failed .');
+                }
+                else
+                {
+                   $insertData['mcq_picture_two'] = $f_newfile;
+                   
+                }
+             }
+
+
+              if(isset($_FILES['mcq_picture_three']['name']) && $_FILES['mcq_picture_three']['name'] != '') {
+
+                $f_name         =$_FILES['mcq_picture_three']['name'];
+                $f_tmp          =$_FILES['mcq_picture_three']['tmp_name'];
+                $f_size         =$_FILES['mcq_picture_three']['size'];
+                $f_extension    =explode('.',$f_name);
+                $f_extension    =strtolower(end($f_extension));
+                $f_newfile      =uniqid().'.'.$f_extension;
+                $store          ="uploads/questiomcq/".$f_newfile;
+            
+                if(!move_uploaded_file($f_tmp,$store))
+                {
+                    $this->session->set_flashdata('error', 'Image Upload Failed .');
+                }
+                else
+                {
+                   $insertData['mcq_picture_three'] = $f_newfile;
+                   
+                }
+             }
+
+
+               if(isset($_FILES['mcq_picture_four']['name']) && $_FILES['mcq_picture_four']['name'] != '') {
+
+                $f_name         =$_FILES['mcq_picture_four']['name'];
+                $f_tmp          =$_FILES['mcq_picture_four']['tmp_name'];
+                $f_size         =$_FILES['mcq_picture_four']['size'];
+                $f_extension    =explode('.',$f_name);
+                $f_extension    =strtolower(end($f_extension));
+                $f_newfile      =uniqid().'.'.$f_extension;
+                $store          ="uploads/questiomcq/".$f_newfile;
+            
+                if(!move_uploaded_file($f_tmp,$store))
+                {
+                    $this->session->set_flashdata('error', 'Image Upload Failed .');
+                }
+                else
+                {
+                   $insertData['mcq_picture_four'] = $f_newfile;
+                   
+                }
+             }
+
+
+             if(isset($_FILES['tf_picture_question']['name']) && $_FILES['tf_picture_question']['name'] != '') {
+
+                $f_name         =$_FILES['tf_picture_question']['name'];
+                $f_tmp          =$_FILES['tf_picture_question']['tmp_name'];
+                $f_size         =$_FILES['tf_picture_question']['size'];
+                $f_extension    =explode('.',$f_name);
+                $f_extension    =strtolower(end($f_extension));
+                $f_newfile      =uniqid().'.'.$f_extension;
+                $store          ="uploads/questiontf/".$f_newfile;
+            
+                if(!move_uploaded_file($f_tmp,$store))
+                {
+                    $this->session->set_flashdata('error', 'Image Upload Failed .');
+                }
+                else
+                {
+                   $insertData['tf_picture_question'] = $f_newfile;
+                   
+                }
+             }
+
+ 
+             $insertData['answer_picture_true'] = $form_data['answer_picture_true'];
+             $insertData['answer_picture_false'] = $form_data['answer_picture_false'];
+
+
+                $insertData['marks'] = $form_data['marks'];
+
                 $insertData['status'] = $form_data['status'];
                 $insertData['date_by']      = date('Y-m-d');
 
-            $result = $this->blueprint_model->save($insertData);
+            $result = $this->question_model->save($insertData);
             if($result > 0)
             {
-                $this->session->set_flashdata('success', 'Blueprint Successfully Added');
+                $this->session->set_flashdata('success', 'Question Successfully Added');
             }
             else
             { 
-                $this->session->set_flashdata('error', 'Blueprint Addition failed');
+                $this->session->set_flashdata('error', 'Question Addition failed');
             }
-            redirect('admin/blueprint/addnew');
+            redirect('admin/blueprint/');
           }  
         
     }
