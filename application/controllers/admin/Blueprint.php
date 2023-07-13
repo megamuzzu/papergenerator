@@ -11,6 +11,7 @@ class Blueprint extends BaseController
         $this->load->model('admin/blueprint_model');
         $this->load->model('admin/subject_model');
         $this->load->model('admin/classes_model');
+        $this->load->model('admin/question_model');
     }
 
     /**
@@ -46,22 +47,35 @@ class Blueprint extends BaseController
         
     } 
 
-    public function addblueprint()
+    public function addblueprint($id = NULL)
     {
-        
+        $this->isLoggedIn();
+
         $where = array();
         $where['table'] = 'subject';
         $data['subject_data'] = $this->subject_model->findDynamic($where);
         $data['subject_name'] = $data['subject_data'][0]->subject_name;
         $data['subject_code'] = $data['subject_data'][0]->subject_code;
 
-
         $where = array();
         $where['table'] = 'classes';
         $data['class_data'] = $this->classes_model->findDynamic($where);
         $data['class_name'] = $data['class_data'][0]->student_class_name;
 
-        $this->isLoggedIn();
+
+         
+        /*$blueprintId = $this->uri->segment(4);
+        $this->load->model('Question_model');
+        $data['blueprintIds'] = $this->Question_model->getBlueprintIds($blueprintId);*/
+
+
+         
+        $blueprintId = $this->uri->segment(4);
+        $data['question_data'] = $this->question_model->getQuestionsByBlueprintId($blueprintId);
+        
+
+
+        $data['edit_data'] = $this->blueprint_model->find($id);
         $this->global['pageTitle'] = 'Website Name : Add New';
         $this->loadViews("admin/question/addblueprint", $this->global, $data , NULL);
         

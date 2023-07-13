@@ -46,6 +46,26 @@
                   </div>
                   <!-- General Form Elements -->
                   <form role="form" action="<?php echo base_url() ?>admin/question/insertnow" method="post" role="form" enctype="multipart/form-data">
+
+                    
+
+
+                     <pre>
+                        <?php
+                           print_r($question_data);
+
+                        ?>
+                     </pre> 
+ 
+
+                  <input type="text" name="blueprint_id" class="form-control" value="<?php echo $edit_data->id;?>" hidden>
+                  <input type="text" name="question_paper_name" class="form-control" value="<?php echo $edit_data->question_paper_name;?>" hidden>
+                  <input type="text" name="subject_name" class="form-control" value="<?php echo $edit_data->subject_name;?>" hidden>
+                  <input type="text" name="subject_code" class="form-control" value="<?php echo $edit_data->subject_code;?>" hidden>
+
+                      
+
+
                      <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Question Type</label>
                         <div class="col-sm-10">
@@ -251,6 +271,75 @@
       </div>
       </div>
    </section>
+
+
+
+     <?php
+                              foreach ($question_data as $key => $value)
+                              {
+                                   
+                      ?>
+
+
+    <section class="section">
+      <div class="row">
+         <div class="col-lg-12">
+            <div class="card">
+               <div class="card-body mt-5">
+                
+                   <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Q.No : </label>
+                        <div class="col-sm-10">
+                              <?php echo $value['question_fitb'] ?>
+                              <?php echo $value['question_qa'] ?>
+                              <?php echo $value['question_tf'] ?>
+                              <?php echo $value['question_mcq'] ?>
+                              <?php echo $value['question_picture_mcq'] ?>
+                              <?php echo $value['tf_picture_question'] ?>
+                           </div>
+                     </div>
+
+
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Note : </label>
+                        <div class="col-sm-10">
+                              <?php echo $value['answer_fitb'] ?>
+                              <?php echo $value['answer_qa'] ?>
+                              <?php echo $value['answer_true'] ?>
+                              <?php echo $value['answer_false'] ?>
+                              <?php echo $value['answer_mcq_one'] ?>
+                              <?php echo $value['answer_mcq_two'] ?>
+                              <?php echo $value['answer_mcq_three'] ?>
+                              <?php echo $value['answer_mcq_four'] ?>
+                              <?php echo $value['mcq_picture_one'] ?>
+                              <?php echo $value['mcq_picture_two'] ?>
+                              <?php echo $value['mcq_picture_three'] ?>
+                              <?php echo $value['mcq_picture_four'] ?>
+                              <?php echo $value['answer_picture_true'] ?>
+                              <?php echo $value['answer_picture_false'] ?>
+                           </div>
+                     </div>
+                  
+                
+               </div>
+               <!-- End General Form Elements -->
+            </div>
+         </div>
+      </div>
+      
+   </section>
+
+
+     <?php
+
+                    }
+
+                        ?>
+
+
+
+
+
 </main>
 <!-- End #main -->
 <script>

@@ -53,7 +53,15 @@ class Question extends BaseController
             $this->addnew();
         }
         else
-        {   
+        {       
+                $insertData['blueprint_id'] = $form_data['blueprint_id'];
+
+                $insertData['question_paper_name'] = $form_data['question_paper_name'];
+                $insertData['subject_name'] = $form_data['subject_name'];
+                $insertData['subject_code'] = $form_data['subject_code'];
+
+
+
                 $insertData['question_type'] = $form_data['question_type'];
 
                 $insertData['question_fitb'] = $form_data['question_fitb'];
@@ -190,6 +198,9 @@ class Question extends BaseController
  
              $insertData['answer_picture_true'] = $form_data['answer_picture_true'];
              $insertData['answer_picture_false'] = $form_data['answer_picture_false'];
+
+
+            
 
 
                 $insertData['marks'] = $form_data['marks'];
