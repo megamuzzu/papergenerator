@@ -50,12 +50,7 @@
                     
 
 
-                     <pre>
-                        <?php
-                           print_r($question_data);
-
-                        ?>
-                     </pre> 
+                 
  
 
                   <input type="text" name="blueprint_id" class="form-control" value="<?php echo $edit_data->id;?>" hidden>
@@ -294,8 +289,18 @@
                               <?php echo $value['question_qa'] ?>
                               <?php echo $value['question_tf'] ?>
                               <?php echo $value['question_mcq'] ?>
-                              <?php echo $value['question_picture_mcq'] ?>
-                              <?php echo $value['tf_picture_question'] ?>
+
+                              <?php $tf_picture_question = $value['tf_picture_question'];
+
+                               if (!empty($tf_picture_question)) {
+                                     echo '<img src="' . base_url() . 'uploads/questiontf/' . $tf_picture_question . '" alt="Picture T&F Picture" style="width:100px;">';
+                              }
+
+                               ?>
+
+                               <?php echo $value['question_picture_mcq'] ?>
+
+
                            </div>
                      </div>
 
@@ -311,12 +316,42 @@
                               <?php echo $value['answer_mcq_two'] ?>
                               <?php echo $value['answer_mcq_three'] ?>
                               <?php echo $value['answer_mcq_four'] ?>
-                              <?php echo $value['mcq_picture_one'] ?>
-                              <?php echo $value['mcq_picture_two'] ?>
-                              <?php echo $value['mcq_picture_three'] ?>
-                              <?php echo $value['mcq_picture_four'] ?>
                               <?php echo $value['answer_picture_true'] ?>
                               <?php echo $value['answer_picture_false'] ?>
+
+                               <?php $mcq_picture_one = $value['mcq_picture_one'];
+
+                               if (!empty($mcq_picture_one)) {
+                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_one . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
+                              }
+
+                               ?> 
+
+                                <?php $mcq_picture_two = $value['mcq_picture_two'];
+
+                               if (!empty($mcq_picture_two)) {
+                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_two . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
+                              }
+
+                               ?>  
+
+                               <?php $mcq_picture_three = $value['mcq_picture_three'];
+
+                               if (!empty($mcq_picture_three)) {
+                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_three . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
+                              }
+
+                               ?> 
+
+                                <?php $mcq_picture_four = $value['mcq_picture_four'];
+
+                               if (!empty($mcq_picture_four)) {
+                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_four . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
+                              }
+
+                               ?>
+
+
                            </div>
                      </div>
                   
