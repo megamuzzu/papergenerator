@@ -56,13 +56,6 @@
 
                <input type="text" name="id" class="form-control" value="<?php echo $edit_data->id;?>" hidden>
 
-
-
-
-
-
-
-
                      <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Question Type</label>
                         <div class="col-sm-10">

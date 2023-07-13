@@ -185,6 +185,23 @@ class Question_model extends Base_model
         return $query->result_array();
     }
  
-    
+   public function did_delete_row($id){
+    $this->db->select('blueprint_id'); // Select the blueprint_id column
+    $this->db->where('id', $id);
+    $query = $this->db->get('questions');
+
+    if ($query->num_rows() > 0) {
+        $row = $query->row();
+        $blueprint_id = $row->blueprint_id;
+
+        $this->db->where('id', $id);
+        $this->db->delete('questions');
+
+        return $blueprint_id;
+    } else {
+        return false;
+    }
+}
+
 
 }

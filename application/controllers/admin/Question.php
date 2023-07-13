@@ -568,6 +568,16 @@ class Question extends BaseController
         else { echo(json_encode(array('status'=>FALSE))); }
     }
     
+  public function delete_row($id) {
+    $blue_id = $this->question_model->did_delete_row($id);
+
+    if ($blue_id !== false) {
+        redirect('admin/blueprint/addblueprint/'.$blue_id);
+    } else {
+        redirect('admin/blueprint/');
+    }
+}
+
     
 
     
