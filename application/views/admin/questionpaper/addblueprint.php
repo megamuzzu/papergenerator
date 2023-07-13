@@ -315,7 +315,7 @@
                               <a class="btn btn-sm btn-info" href="<?php echo base_url() . 'admin/blueprint/editquestion/' . $value['id']; ?>">Edit</a>
                               <!-- <a class="btn btn-sm btn-danger deletebtn" href="#" data-userid="'<?php.$value['id'].?>'">Delete</a> -->
 
-                              <a class="btn btn-sm btn-danger" href="<?php echo base_url().'admin/question/delete_row/'.$value['id'];?>">Delete</a>
+                              <a href="<?php echo base_url().'admin/question/delete_row/'.$value['id'];?>">Delete</a>
 
                            </div>
                            

@@ -4,8 +4,8 @@
       <h1>Question Blueprint</h1>
       <nav>
          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?php echo base_url()?>admin">Home</a></li>
-            <li class="breadcrumb-item active"><a href="<?php echo base_url()?>admin/blueprint">Question Blueprint</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url()?>admin/blueprint/">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url()?>admin/blueprint/">Questions</a></li>
          </ol>
       </nav>
    </div>
@@ -45,33 +45,28 @@
                      </div>
                   </div>
                   <!-- General Form Elements -->
-                  <form role="form" action="<?php echo base_url() ?>admin/question/insertnow" method="post" role="form" enctype="multipart/form-data">
-
-                    
-
-
-                 
+                  <form role="form" action="<?php echo base_url() ?>admin/question/update" method="post" role="form" enctype="multipart/form-data">
+              
  
 
-                  <input type="text" name="blueprint_id" class="form-control" value="<?php echo $edit_data->id;?>" hidden>
+                  <input type="text" name="blueprint_id" class="form-control" value="<?php echo $edit_data->blueprint_id;?>" hidden>
                   <input type="text" name="question_paper_name" class="form-control" value="<?php echo $edit_data->question_paper_name;?>" hidden>
                   <input type="text" name="subject_name" class="form-control" value="<?php echo $edit_data->subject_name;?>" hidden>
                   <input type="text" name="subject_code" class="form-control" value="<?php echo $edit_data->subject_code;?>" hidden>
 
-            
-
+               <input type="text" name="id" class="form-control" value="<?php echo $edit_data->id;?>" hidden>
 
                      <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Question Type</label>
                         <div class="col-sm-10">
                            <select class="form-select" name="question_type" aria-label="Default select example" onchange="showFields(this.value)">
                               <option selected>Select Question Type</option>
-                              <option value="1">MCQ</option>
-                              <option value="2">True & False</option>
-                              <option value="3">Fill In The Blanks</option>
-                              <option value="4">Question & Answers</option>
-                              <option value="5">Picture MCQ</option>
-                              <option value="6">Picture True & False</option>
+                              <option value="1" <?php echo ($edit_data->question_type == 1)?'selected':'';?>>MCQ</option>
+                              <option value="2" <?php echo ($edit_data->question_type == 2)?'selected':'';?>>True & False</option>
+                              <option value="3" <?php echo ($edit_data->question_type == 3)?'selected':'';?>>Fill In The Blanks</option>
+                              <option value="4" <?php echo ($edit_data->question_type == 4)?'selected':'';?>>Question & Answers</option>
+                              <option value="5" <?php echo ($edit_data->question_type == 5)?'selected':'';?>>Picture MCQ</option>
+                              <option value="6" <?php echo ($edit_data->question_type == 6)?'selected':'';?>>Picture True & False</option>
                            </select>
                         </div>
                      </div>
@@ -79,19 +74,19 @@
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Question FITB</label>
                            <div class="col-sm-10">
-                              <textarea name="question_fitb" class="form-control"></textarea>
+                              <textarea name="question_fitb" class="form-control"><?php echo $edit_data->question_fitb;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Answer FITB</label>
                            <div class="col-sm-10">
-                              <textarea name="answer_fitb" class="form-control"></textarea>
+                              <textarea name="answer_fitb" class="form-control"><?php echo $edit_data->answer_fitb;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Marks</label>
                            <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
+                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
                            </div>
                         </div>
                      </div>
@@ -99,37 +94,37 @@
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Question MCQ</label>
                            <div class="col-sm-10">
-                              <textarea name="question_mcq" class="form-control"></textarea>
+                              <textarea name="question_mcq" class="form-control"><?php echo $edit_data->question_mcq;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Option One</label>
                            <div class="col-sm-10">
-                              <textarea name="answer_mcq_one" class="form-control"></textarea>
+                              <textarea name="answer_mcq_one" class="form-control"><?php echo $edit_data->answer_mcq_one;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Option Two</label>
                            <div class="col-sm-10">
-                              <textarea name="answer_mcq_two" class="form-control"></textarea>
+                              <textarea name="answer_mcq_two" class="form-control"><?php echo $edit_data->answer_mcq_two;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Option Three</label>
                            <div class="col-sm-10">
-                              <textarea name="answer_mcq_three" class="form-control"></textarea>
+                              <textarea name="answer_mcq_three" class="form-control"><?php echo $edit_data->answer_mcq_three;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Option Four</label>
                            <div class="col-sm-10">
-                              <textarea name="answer_mcq_four" class="form-control"></textarea>
+                              <textarea name="answer_mcq_four" class="form-control"><?php echo $edit_data->answer_mcq_four;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Marks</label>
                            <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
+                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
                            </div>
                         </div>
                      </div>
@@ -137,25 +132,25 @@
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Question True & False</label>
                            <div class="col-sm-10">
-                              <textarea name="question_tf" class="form-control"></textarea>
+                              <textarea name="question_tf" class="form-control"><?php echo $edit_data->question_tf;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Answer One</label>
                            <div class="col-sm-10">
-                              <textarea name="answer_true" class="form-control"></textarea>
+                              <textarea name="answer_true" class="form-control"><?php echo $edit_data->answer_true;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Answer Two</label>
                            <div class="col-sm-10">
-                              <textarea name="answer_false" class="form-control"></textarea>
+                              <textarea name="answer_false" class="form-control"><?php echo $edit_data->answer_false;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Marks</label>
                            <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
+                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
                            </div>
                         </div>
                      </div>
@@ -163,19 +158,19 @@
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Question & Answer</label>
                            <div class="col-sm-10">
-                              <textarea name="question_qa" class="form-control"></textarea>
+                              <textarea name="question_qa" class="form-control"><?php echo $edit_data->question_qa;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Answer</label>
                            <div class="col-sm-10">
-                              <textarea name="answer_qa" class="form-control"></textarea>
+                              <textarea name="answer_qa" class="form-control"><?php echo $edit_data->answer_qa;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Marks</label>
                            <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
+                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
                            </div>
                         </div>
                      </div>
@@ -183,37 +178,78 @@
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Picture MCQ</label>
                            <div class="col-sm-10">
-                              <textarea name="question_picture_mcq" class="form-control"></textarea>
+                              <textarea name="question_picture_mcq" class="form-control"><?php echo $edit_data->question_picture_mcq;?></textarea>
                            </div>
                         </div>
+
+
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Picture One</label>
                            <div class="col-sm-10">
                               <input class="form-control" type="file" name="mcq_picture_one">
                            </div>
                         </div>
+
+                             <div class="row mb-3">
+                           <label for="inputText" class="col-sm-2 col-form-label">Preview One</label>
+                           <div class="col-sm-10">
+                           <img  id="preview_image1" src ="<?php echo base_url('uploads/questiomcq/'). $edit_data->mcq_picture_one; ?>" width="100"/>
+                           <input type="hidden" id="oldimage" name ="oldimage" class="form-control"  value="<?php echo $edit_data->mcq_picture_one;?>">
+                           </div>
+                           </div>
+
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Picture Two</label>
                            <div class="col-sm-10">
                               <input class="form-control" type="file" name="mcq_picture_two">
                            </div>
                         </div>
+
+                             <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Preview Two</label>
+                  <div class="col-sm-10">
+                    <img  id="preview_image1" src ="<?php echo base_url('uploads/questiomcq/'). $edit_data->mcq_picture_two; ?>" width="100"/>
+                    <input type="hidden" id="oldimage" name ="oldimage" class="form-control"  value="<?php echo $edit_data->mcq_picture_two;?>">
+                  </div>
+                </div>
+
+
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Picture Three</label>
                            <div class="col-sm-10">
                               <input class="form-control" type="file" name="mcq_picture_three">
                            </div>
                         </div>
+
+                             <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Preview Three</label>
+                  <div class="col-sm-10">
+                    <img  id="preview_image1" src ="<?php echo base_url('uploads/questiomcq/'). $edit_data->mcq_picture_three; ?>" width="100"/>
+                    <input type="hidden" id="oldimage" name ="oldimage" class="form-control"  value="<?php echo $edit_data->mcq_picture_three;?>">
+                  </div>
+                </div>
+
+
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Picture Four</label>
                            <div class="col-sm-10">
                               <input class="form-control" type="file" name="mcq_picture_four">
                            </div>
                         </div>
+
+                             <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Preview Four</label>
+                  <div class="col-sm-10">
+                    <img  id="preview_image1" src ="<?php echo base_url('uploads/questiomcq/'). $edit_data->mcq_picture_four; ?>" width="100"/>
+                    <input type="hidden" id="oldimage" name ="oldimage" class="form-control"  value="<?php echo $edit_data->mcq_picture_four;?>">
+                  </div>
+                </div>
+
+
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Marks</label>
                            <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
+                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
                            </div>
                         </div>
                      </div>
@@ -224,35 +260,46 @@
                               <input class="form-control" type="file" name="tf_picture_question">
                            </div>
                         </div>
+
+                         <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Preview Four</label>
+                  <div class="col-sm-10">
+                    <img  id="preview_image1" src ="<?php echo base_url('uploads/questiontf/'). $edit_data->tf_picture_question; ?>" width="100"/>
+                    <input type="hidden" id="oldimage" name ="oldimage" class="form-control"  value="<?php echo $edit_data->tf_picture_question;?>">
+                  </div>
+                </div>
+
+
+
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Option One</label>
                            <div class="col-sm-10">
-                              <textarea name="answer_picture_true" class="form-control"></textarea>
+                              <textarea name="answer_picture_true" class="form-control"><?php echo $edit_data->answer_picture_true;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Option Two</label>
                            <div class="col-sm-10">
-                              <textarea name="answer_picture_false" class="form-control"></textarea>
+                              <textarea name="answer_picture_false" class="form-control"><?php echo $edit_data->answer_picture_false;?></textarea>
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label class="col-sm-2 col-form-label">Marks</label>
                            <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
+                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
                            </div>
                         </div>
                      </div>
                      <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Status</label>
-                        <div class="col-sm-10">
-                           <select class="form-select" name="status" aria-label="Default select example">
-                              <option selected>Select Status</option>
-                              <option value="1">Active</option>
-                              <option value="2">Inactive</option>
-                           </select>
-                        </div>
-                     </div>
+                  <label class="col-sm-2 col-form-label">Status</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" name="status" aria-label="Default select example">
+                      <option>Select Status</option>
+                      <option value="1" <?php echo ($edit_data->status == 1)?'selected':'';?>>Active</option>
+                      <option value="0" <?php echo ($edit_data->status == 0)?'selected':'';?>>Inactive</option>
+                    </select>
+                  </div>
+                </div>
                      <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Submit Button</label>
                         <div class="col-sm-10">
@@ -266,130 +313,6 @@
       </div>
       </div>
    </section>
-
-
-
-     <?php
-                              $counter = 1;
-                              foreach ($question_data as $key => $value)
-                              {
-                                   
-                      ?>
-
-
-    <section class="section">
-      <div class="row">
-         <div class="col-lg-12">
-            <div class="card">
-               <div class="card-body mt-5">
-                
-                   <div class="row mb-3">
-                     <div class="col-sm-2">
-                        <?php
-                           echo '<label class="col-form-label">Q.No ' . $counter . '</label>';
-                           $counter++;
-                        ?>
-                     </div>
-                        <div class="col-sm-8">
-                              <?php echo $value['question_fitb'] ?>
-                              <?php echo $value['question_qa'] ?>
-                              <?php echo $value['question_tf'] ?>
-                              <?php echo $value['question_mcq'] ?>
-
-                              <?php $tf_picture_question = $value['tf_picture_question'];
-
-                               if (!empty($tf_picture_question)) {
-                                     echo '<img src="' . base_url() . 'uploads/questiontf/' . $tf_picture_question . '" alt="Picture T&F Picture" style="width:100px;">';
-                              }
-
-                               ?>
-
-                               <?php echo $value['question_picture_mcq'] ?>
-
-
-                           </div>
-
-                           <div class="col-sm-2">
-
-                              
-                              <a class="btn btn-sm btn-info" href="<?php echo base_url() . 'admin/blueprint/editquestion/' . $value['id']; ?>">Edit</a>
-                              <!-- <a class="btn btn-sm btn-danger deletebtn" href="#" data-userid="'<?php.$value['id'].?>'">Delete</a> -->
-
-                              <a class="btn btn-sm btn-danger" href="<?php echo base_url().'admin/question/delete_row/'.$value['id'];?>">Delete</a>
-
-                           </div>
-                           
-                     </div>
-
-
-                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Note : </label>
-                        <div class="col-sm-10">
-                              <?php echo $value['answer_fitb'] ?>
-                              <?php echo $value['answer_qa'] ?>
-                              <?php echo $value['answer_true'] ?>
-                              <?php echo $value['answer_false'] ?>
-                              <?php echo $value['answer_mcq_one'] ?>
-                              <?php echo $value['answer_mcq_two'] ?>
-                              <?php echo $value['answer_mcq_three'] ?>
-                              <?php echo $value['answer_mcq_four'] ?>
-                              <?php echo $value['answer_picture_true'] ?>
-                              <?php echo $value['answer_picture_false'] ?>
-
-                               <?php $mcq_picture_one = $value['mcq_picture_one'];
-
-                               if (!empty($mcq_picture_one)) {
-                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_one . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
-                              }
-
-                               ?> 
-
-                                <?php $mcq_picture_two = $value['mcq_picture_two'];
-
-                               if (!empty($mcq_picture_two)) {
-                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_two . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
-                              }
-
-                               ?>  
-
-                               <?php $mcq_picture_three = $value['mcq_picture_three'];
-
-                               if (!empty($mcq_picture_three)) {
-                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_three . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
-                              }
-
-                               ?> 
-
-                                <?php $mcq_picture_four = $value['mcq_picture_four'];
-
-                               if (!empty($mcq_picture_four)) {
-                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_four . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
-                              }
-
-                               ?>
-
-
-                           </div>
-                     </div>
-                  
-                
-               </div>
-               <!-- End General Form Elements -->
-            </div>
-         </div>
-      </div>
-      
-   </section>
-
-
-     <?php
-
-                    }
-
-                        ?>
-
-
-
 
 
 </main>
