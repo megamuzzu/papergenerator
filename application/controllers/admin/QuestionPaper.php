@@ -2,7 +2,7 @@
 
 require APPPATH . '/libraries/BaseController.php';
 
-class Question extends BaseController
+class QuestionPaper extends BaseController
 {
 
     public function __construct()
@@ -22,7 +22,7 @@ class Question extends BaseController
         $this->loadViews("admin/question/list", $this->global, NULL , NULL);
         
     }
-
+z
    
     // Insert Member *************************************************************
     public function insertnow()
