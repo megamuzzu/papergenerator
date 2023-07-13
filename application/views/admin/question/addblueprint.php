@@ -270,6 +270,7 @@
 
 
      <?php
+                              $counter = 1;
                               foreach ($question_data as $key => $value)
                               {
                                    
@@ -283,7 +284,10 @@
                <div class="card-body mt-5">
                 
                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Q.No : </label>
+                        <?php
+                           echo '<label class="col-sm-2 col-form-label">Q.No ' . $counter . '</label>';
+                           $counter++;
+                        ?>
                         <div class="col-sm-10">
                               <?php echo $value['question_fitb'] ?>
                               <?php echo $value['question_qa'] ?>
