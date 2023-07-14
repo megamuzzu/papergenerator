@@ -1270,3 +1270,13 @@ a.addnewbtn {
 .col-sm-12.line-by-line {
     display: inline-flex;
 }
+.school_details{
+  text-align: center;
+  padding: 20px;
+}
+.subject-details{
+  text-align: center;
+}
+.questionsStart {
+    padding: 40px;
+}

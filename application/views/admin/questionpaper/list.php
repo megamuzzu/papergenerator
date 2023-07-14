@@ -1,9 +1,13 @@
   <main id="main" class="main">
-
-
+         <div class="pagetitle">
+      <nav>
+        <ol class="breadcrumb">
+           <li class="breadcrumb-item"><a href="<?php echo base_url()?>admin/questionpaper/addnew" class="addnewbtn">Add New</a></li>
+        </ol>
+      </nav>
+    </div>
     <section class="section dashboard">
       <div class="row">
-
         <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
@@ -11,19 +15,21 @@
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
                 <div class="card-body">
-                  <h5 class="card-title">Blueprint Data <span>| List</span></h5>
+                  <h5 class="card-title">Question Paper Data <span>| List</span></h5>
                     <table  class="table  table-bordered  table-striped mb-0" id="example" style="width: 100%!important;">
                       <thead>     
                         <tr role="row">
                           <th scope="col">No</th>
                           <th scope="col">Question Paper Name</th>
-                          <th scope="col">Subject Code</th>
+                          <th scope="col">Term</th>
+                          <th scope="col">Class Name</th>
+                          <th scope="col">Class Section</th>
                           <th scope="col">Subject Name</th>
-                          <th scope="col">Class Details</th>
+                          <th scope="col">Subject Code</th>
                           <th scope="col">Status</th>
                            <?php if($this->session->userdata('role') == 1){ ?>
                           <th scope="col">Action</th>
-                          <th scope="col">Add Question</th>  
+                          <th scope="col">Print Question</th>  
                           <?php }?>                     
                         </tr>
                       </thead>
@@ -66,7 +72,7 @@
           var userId = $(this).attr("data-id");
           var value  = $(this).val();
 
-            hitURL = "<?php echo base_url() ?>admin/blueprint/statusChange",
+            hitURL = "<?php echo base_url() ?>admin/questionpaper/statusChange",
             currentRow = $(this);
           
             jQuery.ajax({
@@ -89,7 +95,7 @@
          jQuery(document).on("click", ".deletebtn", function(){
 
           var userId = $(this).data("userid"),
-            hitURL = "<?php echo base_url() ?>admin/blueprint/delete",
+            hitURL = "<?php echo base_url() ?>admin/questionpaper/delete",
             currentRow = $(this);
           
           var confirmation = confirm("Are you sure to delete this Categorys ?");
@@ -130,7 +136,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('admin/blueprint/ajax_list')?>",
+            "url": "<?php echo site_url('admin/questionpaper/ajax_list')?>",
             "type": "POST"
         },
  

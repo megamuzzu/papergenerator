@@ -44,18 +44,31 @@
                      </div>
                   </div>
                   <!-- General Form Elements -->
-                  <form role="form" action="<?php echo base_url() ?>admin/blueprint/insertnow" method="post" role="form" enctype="multipart/form-data">
+                  <form role="form" action="<?php echo base_url() ?>admin/questionpaper/insertnow" method="post" role="form" enctype="multipart/form-data">
                      <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Question Paper Name</label>
                         <div class="col-sm-10">
-                           <input type="text" name="question_paper_name" class="form-control">
+                           <input type="text" name="question_name" class="form-control">
                         </div>
                      </div>
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Select Terms</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="term" aria-label="Default select example">
+                              <option>Select Terms</option>
+                          <?php foreach ($term_name as $sub): ?>
+                          <option value="<?php echo $sub->term_name; ?>"><?php echo $sub->term_name; ?></option>
+                        <?php endforeach; ?>
+                           </select>
+                        </div>
+                     </div>
+
 
                      <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Subject Name</label>
                         <div class="col-sm-10">
-                           <select class="form-select" name="subject_name" aria-label="Default select example">
+                           <select class="form-select" name="sub_name" aria-label="Default select example">
                               <option>Select Subject</option>
                           <?php foreach ($subject_name as $sub): ?>
                           <option value="<?php echo $sub->subject_name; ?>"><?php echo $sub->subject_name; ?></option>
@@ -66,7 +79,7 @@
                      <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Subject Code</label>
                         <div class="col-sm-10">
-                           <select class="form-select" name="subject_code" aria-label="Default select example">
+                           <select class="form-select" name="sub_code" aria-label="Default select example">
                               <option>Select Subject Code</option>
                           <?php foreach ($subject_code as $sub): ?>
                           <option value="<?php echo $sub->subject_code; ?>"><?php echo $sub->subject_code; ?></option>
@@ -81,6 +94,30 @@
                               <option>Select Class</option>
                           <?php foreach ($studentClassName as $class): ?>
                           <option value="<?php echo $class->student_class_name; ?>"><?php echo $class->student_class_name; ?></option>
+                        <?php endforeach; ?>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Class Section</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="class_sec" aria-label="Default select example">
+                              <option>Select Section</option>
+                          <?php foreach ($studentSectionName as $section): ?>
+                          <option value="<?php echo $section->student_sections_name; ?>"><?php echo $section->student_sections_name; ?></option>
+                        <?php endforeach; ?>
+                           </select>
+                        </div>
+                     </div>
+
+
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Select Blueprint</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="blueprint_data" aria-label="Default select example">
+                              <option>Select Blueprint</option>
+                          <?php foreach ($blueprintName as $blue): ?>
+                          <option value="<?php echo $blue->question_paper_name; ?>"><?php echo $blue->question_paper_name; ?></option>
                         <?php endforeach; ?>
                            </select>
                         </div>

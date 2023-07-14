@@ -54,8 +54,7 @@ class Blueprint extends BaseController
     {
         $this->isLoggedIn();
 
-        $delId = $this->input->post('id');  
-        $result = $this->question_model->delete($delId);     
+             
 
         $where = array();
         $where['table'] = 'subject';

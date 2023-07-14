@@ -114,7 +114,7 @@
 
      
         <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url()?>admin">
+        <a class="nav-link collapsed" href="<?php echo base_url()?>admin/questionpaper/">
           <i class="bi bi-paperclip"></i>
           <span>Generate Question Paper</span>
         </a>
