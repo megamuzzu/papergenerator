@@ -206,7 +206,7 @@ class Questionpaper_model extends Base_model
  public function getQuestionsByBlueprintData() {
         $this->db->select('q.*');
         $this->db->from('print p');
-        $this->db->join('questions q', 'p.blueprint_data = q.blueprint_id');
+        $this->db->join('questions q', 'p.blueprint_data = q.question_paper_name');
         $query = $this->db->get();
         return $query->result();
     }

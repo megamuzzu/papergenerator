@@ -12,6 +12,11 @@
    <section class="section">
       <div class="row">
          <div class="col-lg-12">
+
+                          <?php
+                     print_r($blueprintName);
+                     ?>
+
             <div class="card">
                <div class="card-body">
                   <h5 class="card-title">Please fill the details</h5>

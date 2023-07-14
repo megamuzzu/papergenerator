@@ -6,6 +6,7 @@
             <div class="row">
                <!-- Recent Sales -->
                <div class="col-12">
+                  
                   <div class="card recent-sales overflow-auto" id="printPaper">
                      <div class="card-body">
                         <?php
@@ -120,9 +121,9 @@
                               
                               ?>
                         </div>
-                        <!-- <div class="printBtn">
+                        <div class="printBtn">
                            <button onclick="printDiv('printPaper')">Print PDF</button>
-                        </div> -->
+                        </div>
                      </div>
                   </div>
                </div>
@@ -131,7 +132,7 @@
       </div>
    </section>
 </main>
-<!-- <script>
+<script>
     function printDiv(divId) {
         var printContents = document.getElementById(divId).innerHTML;
         var originalContents = document.body.innerHTML;
@@ -139,4 +140,4 @@
         window.print();
         document.body.innerHTML = originalContents;
     }
-</script> -->
+</script>

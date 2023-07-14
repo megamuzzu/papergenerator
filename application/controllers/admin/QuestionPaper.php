@@ -35,7 +35,7 @@ class Questionpaper extends BaseController
             
         $where = array();
         $where['table'] = 'blueprint';
-        $where['field'] = 'question_paper_name';
+        $where['field'] = 'question_paper_name,id';
         $data['blueprintName'] = $this->blueprint_model->findDynamic($where);
 
         $where = array();
@@ -250,6 +250,7 @@ class Questionpaper extends BaseController
         $where['table'] = 'print';
         $data['printDetails'] = $this->questionpaper_model->findDynamic($where);
 
+      
         $data['questionsPaper'] = $this->questionpaper_model->getQuestionsByBlueprintData();
 
         
