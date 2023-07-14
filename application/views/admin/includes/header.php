@@ -112,13 +112,6 @@
       </li>
 
 
-     
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url()?>admin/questionpaper/">
-          <i class="bi bi-paperclip"></i>
-          <span>Generate Question Paper</span>
-        </a>
-      </li>
 
        <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">

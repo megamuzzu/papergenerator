@@ -176,7 +176,7 @@ class Question_model extends Base_model
 
     
     public function getQuestionsByBlueprintId($blueprintId) {
-        $this->db->select('id, question_paper_name, subject_name, subject_code, blueprint_id, question_type, question_fitb, answer_fitb, question_qa, answer_qa, question_tf, answer_true, answer_false, question_mcq, answer_mcq_one, answer_mcq_two, answer_mcq_three, answer_mcq_four, question_picture_mcq, mcq_picture_one, mcq_picture_two, mcq_picture_three, mcq_picture_four, tf_picture_question, answer_picture_true, answer_picture_false, status, date_by, update_by, teacher_id, marks');
+        $this->db->select('id, question_paper_name, subject_name, subject_code, blueprint_id, question_type, question_fitb, answer_fitb, question_qa, answer_qa, question_tf, answer_true, answer_false, question_mcq, answer_mcq_one, answer_mcq_two, answer_mcq_three, answer_mcq_four, question_picture_mcq, mcq_picture_one, mcq_picture_two, mcq_picture_three, mcq_picture_four, tf_picture_question, answer_picture_true, answer_picture_false, status, date_by, update_by, teacher_id, marks,term,sub_name,sub_code,class_name,class_sec,duration');
         $this->db->from('questions');
         $this->db->where('blueprint_id', $blueprintId);
 

@@ -1,4 +1,6 @@
 <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+ <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 <main id="main" class="main">
    <div class="pagetitle">
       <h1>Question Blueprint</h1>
@@ -58,7 +60,70 @@
                   <input type="text" name="subject_name" class="form-control" value="<?php echo $edit_data->subject_name;?>" hidden>
                   <input type="text" name="subject_code" class="form-control" value="<?php echo $edit_data->subject_code;?>" hidden>
 
-            
+               <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Select Terms</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="term" aria-label="Default select example">
+                              <option>Select Terms</option>
+                          <?php foreach ($term_name as $sub): ?>
+                          <option value="<?php echo $sub->term_name; ?>"><?php echo $sub->term_name; ?></option>
+                        <?php endforeach; ?>
+                           </select>
+                        </div>
+                     </div>
+
+
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Subject Name</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="sub_name" aria-label="Default select example">
+                              <option>Select Subject</option>
+                          <?php foreach ($subject_name as $sub): ?>
+                          <option value="<?php echo $sub->subject_name; ?>"><?php echo $sub->subject_name; ?></option>
+                        <?php endforeach; ?>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Subject Code</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="sub_code" aria-label="Default select example">
+                              <option>Select Subject Code</option>
+                          <?php foreach ($subject_code as $sub): ?>
+                          <option value="<?php echo $sub->subject_code; ?>"><?php echo $sub->subject_code; ?></option>
+                        <?php endforeach; ?>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Class Name</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="class_name" aria-label="Default select example">
+                              <option>Select Class</option>
+                          <?php foreach ($studentClassName as $class): ?>
+                          <option value="<?php echo $class->student_class_name; ?>"><?php echo $class->student_class_name; ?></option>
+                        <?php endforeach; ?>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Class Section</label>
+                        <div class="col-sm-10">
+                           <select class="form-select" name="class_sec" aria-label="Default select example">
+                              <option>Select Section</option>
+                          <?php foreach ($studentSectionName as $section): ?>
+                          <option value="<?php echo $section->student_sections_name; ?>"><?php echo $section->student_sections_name; ?></option>
+                        <?php endforeach; ?>
+                           </select>
+                        </div>
+                     </div>
+
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Exam Duration</label>
+                        <div class="col-sm-10">
+                           <input type="text" class="form-control" name="duration" placeholder="Enter Exam Duration">
+                        </div>
+                     </div>
 
 
                      <div class="row mb-3">
@@ -88,12 +153,7 @@
                               <textarea name="answer_fitb" class="form-control"></textarea>
                            </div>
                         </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
-                           </div>
-                        </div>
+                        
                      </div>
                      <div class="mcq" style="display: none;">
                         <div class="row mb-3">
@@ -126,12 +186,7 @@
                               <textarea name="answer_mcq_four" class="form-control"></textarea>
                            </div>
                         </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
-                           </div>
-                        </div>
+                        
                      </div>
                      <div class="tf" style="display: none;">
                         <div class="row mb-3">
@@ -152,12 +207,7 @@
                               <textarea name="answer_false" class="form-control"></textarea>
                            </div>
                         </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
-                           </div>
-                        </div>
+                        
                      </div>
                      <div class="qa" style="display: none;">
                         <div class="row mb-3">
@@ -172,12 +222,7 @@
                               <textarea name="answer_qa" class="form-control"></textarea>
                            </div>
                         </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
-                           </div>
-                        </div>
+                        
                      </div>
                      <div class="pmcq" style="display: none;">
                         <div class="row mb-3">
@@ -210,12 +255,7 @@
                               <input class="form-control" type="file" name="mcq_picture_four">
                            </div>
                         </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
-                           </div>
-                        </div>
+                        
                      </div>
                      <div class="ptf" style="display: none;">
                         <div class="row mb-3">
@@ -236,12 +276,7 @@
                               <textarea name="answer_picture_false" class="form-control"></textarea>
                            </div>
                         </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks">
-                           </div>
-                        </div>
+                        
                      </div>
                      <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Status</label>
@@ -291,10 +326,18 @@
                         ?>
                      </div>
                         <div class="col-sm-8">
-                              <?php echo $value['question_fitb'] ?>
+                              <span class="math-tex">
+                                 <?php echo $value['question_fitb']; ?>
+                              </span>
+                              <span class="math-tex">
                               <?php echo $value['question_qa'] ?>
+                           </span>
+                              <span class="math-tex">
                               <?php echo $value['question_tf'] ?>
+                           </span>
+                           <span class="math-tex">
                               <?php echo $value['question_mcq'] ?>
+                           </span>
 
                               <?php $tf_picture_question = $value['tf_picture_question'];
 
@@ -303,8 +346,9 @@
                               }
 
                                ?>
-
+                               <span class="math-tex">
                                <?php echo $value['question_picture_mcq'] ?>
+                            </span>
 
 
                            </div>
@@ -317,6 +361,8 @@
 
                               <a class="btn btn-sm btn-danger" href="<?php echo base_url().'admin/question/delete_row/'.$value['id'];?>">Delete</a>
 
+                              <a class="btn btn-sm btn-info" href="<?php echo base_url().'admin/blueprint/addmarks/'.$value['id'];?>">Add Marks</a>
+
                            </div>
                            
                      </div>
@@ -325,16 +371,46 @@
                      <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Note : </label>
                         <div class="col-sm-10">
+                           <span class="math-tex">
                               <?php echo $value['answer_fitb'] ?>
+                           </span>
+                           <span class="math-tex">
                               <?php echo $value['answer_qa'] ?>
+                           </span>
+                           <span class="math-tex">
                               <?php echo $value['answer_true'] ?>
+                           </span>
+                           <br>
+                           <span class="math-tex">
                               <?php echo $value['answer_false'] ?>
+                           </span>
+
+
+                           <span class="math-tex">
                               <?php echo $value['answer_mcq_one'] ?>
+                           </span>
+                           <br>
+                           <span class="math-tex">
                               <?php echo $value['answer_mcq_two'] ?>
+                           </span>
+                           <br>
+                           <span class="math-tex">
                               <?php echo $value['answer_mcq_three'] ?>
+                           </span>
+                           <br>
+                           <span class="math-tex">
                               <?php echo $value['answer_mcq_four'] ?>
+                           </span>
+                           
+
+                           
+                           <span class="math-tex">
                               <?php echo $value['answer_picture_true'] ?>
+                           </span>
+                           <br>
+                           <span class="math-tex">
                               <?php echo $value['answer_picture_false'] ?>
+                           </span>
 
                                <?php $mcq_picture_one = $value['mcq_picture_one'];
 
@@ -387,6 +463,19 @@
                     }
 
                         ?>
+
+
+
+   <div class="generateBtn">
+
+      <?php if (isset($value['blueprint_id'])): ?>
+    <a href="<?php echo base_url().'admin/blueprint/view/'.$value['blueprint_id']; ?>">Generate Question Paper</a>
+      <?php endif; ?>
+
+
+
+
+   </div>
 
 
 

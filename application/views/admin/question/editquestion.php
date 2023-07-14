@@ -83,12 +83,6 @@
                               <textarea name="answer_fitb" class="form-control"><?php echo $edit_data->answer_fitb;?></textarea>
                            </div>
                         </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
-                           </div>
-                        </div>
                      </div>
                      <div class="mcq" style="display: none;">
                         <div class="row mb-3">
@@ -121,12 +115,6 @@
                               <textarea name="answer_mcq_four" class="form-control"><?php echo $edit_data->answer_mcq_four;?></textarea>
                            </div>
                         </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
-                           </div>
-                        </div>
                      </div>
                      <div class="tf" style="display: none;">
                         <div class="row mb-3">
@@ -147,12 +135,6 @@
                               <textarea name="answer_false" class="form-control"><?php echo $edit_data->answer_false;?></textarea>
                            </div>
                         </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
-                           </div>
-                        </div>
                      </div>
                      <div class="qa" style="display: none;">
                         <div class="row mb-3">
@@ -165,12 +147,6 @@
                            <label class="col-sm-2 col-form-label">Answer</label>
                            <div class="col-sm-10">
                               <textarea name="answer_qa" class="form-control"><?php echo $edit_data->answer_qa;?></textarea>
-                           </div>
-                        </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
                            </div>
                         </div>
                      </div>
@@ -246,12 +222,6 @@
                 </div>
 
 
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
-                           </div>
-                        </div>
                      </div>
                      <div class="ptf" style="display: none;">
                         <div class="row mb-3">
@@ -281,12 +251,6 @@
                            <label class="col-sm-2 col-form-label">Option Two</label>
                            <div class="col-sm-10">
                               <textarea name="answer_picture_false" class="form-control"><?php echo $edit_data->answer_picture_false;?></textarea>
-                           </div>
-                        </div>
-                        <div class="row mb-3">
-                           <label class="col-sm-2 col-form-label">Marks</label>
-                           <div class="col-sm-10">
-                              <input type="text" class="form-control" name="marks" value="<?php echo $edit_data->marks;?>">
                            </div>
                         </div>
                      </div>

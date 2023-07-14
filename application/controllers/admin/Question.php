@@ -49,6 +49,12 @@ class Question extends BaseController
                 $insertData['subject_name'] = $form_data['subject_name'];
                 $insertData['subject_code'] = $form_data['subject_code'];
 
+                $insertData['term'] = $form_data['term'];
+                $insertData['sub_name'] = $form_data['sub_name'];
+                $insertData['sub_code'] = $form_data['sub_code'];
+                $insertData['class_name'] = $form_data['class_name'];
+                $insertData['class_sec'] = $form_data['class_sec'];
+                $insertData['duration'] = $form_data['duration'];
 
 
                 $insertData['question_type'] = $form_data['question_type'];
@@ -288,17 +294,7 @@ class Question extends BaseController
             redirect('admin/dashboard');
         }
 
-        $where = array();
-        $where['table'] = 'subject';
-        $data['subject_data'] = $this->subject_model->findDynamic($where);
-        $data['subject_name'] = $data['subject_data'][0]->subject_name;
-        $data['subject_code'] = $data['subject_data'][0]->subject_code;
-
-
-        $where = array();
-        $where['table'] = 'classes';
-        $data['class_data'] = $this->classes_model->findDynamic($where);
-        $data['class_name'] = $data['class_data'][0]->student_class_name;
+       
 
         
         $data['edit_data'] = $this->blueprint_model->find($id);
@@ -307,6 +303,9 @@ class Question extends BaseController
         
         
     } 
+
+
+  
 
 
      public function view($id = NULL)
@@ -322,10 +321,46 @@ class Question extends BaseController
         
         $data['edit_data'] = $this->blueprint_model->find($id);
         $this->global['pageTitle'] = 'Website Name : View Data';
-        $this->loadViews("admin/dashboardaus/view", $this->global, $data , NULL);
+        $this->loadViews("admin/question/view", $this->global, $data , NULL);
         
         
     } 
+
+
+        public function updatemarks()
+    {
+        $this->isLoggedIn();
+        $this->load->library('form_validation');                 
+        $this->form_validation->set_rules('marks','Marks','required');
+        
+        
+        //form data 
+        $form_data  = $this->input->post();
+        if($this->form_validation->run() == FALSE)
+        {
+                $this->edit($form_data['id']);
+        }
+        else
+        {   
+
+                
+            $insertData['id'] = $form_data['id'];
+            $insertData['blueprint_id'] = $form_data['blueprint_id'];
+            $insertData['marks'] = $form_data['marks'];
+            $result = $this->question_model->save($insertData);
+
+            if($result > 0)
+            {
+                $this->session->set_flashdata('success', 'Question successfully Updated');
+            }
+            else
+            { 
+                $this->session->set_flashdata('error', 'Question Updation failed');
+            }
+            redirect('admin/blueprint/addblueprint/'.$insertData['blueprint_id']);
+          }  
+        
+    }
 
     // Update Members *************************************************************
     public function update()

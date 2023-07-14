@@ -1280,3 +1280,17 @@ a.addnewbtn {
 .questionsStart {
     padding: 40px;
 }
+span.math-tex p {
+    float: left;
+}
+
+.math-tex {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.letter {
+  font-size: 24px;
+  margin: 5px;
+}

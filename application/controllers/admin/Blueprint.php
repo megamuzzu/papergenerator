@@ -12,6 +12,8 @@ class Blueprint extends BaseController
         $this->load->model('admin/subject_model');
         $this->load->model('admin/classes_model');
         $this->load->model('admin/question_model');
+        $this->load->model('admin/settings_model');
+        $this->load->model('admin/terms_model');
     }
 
     /**
@@ -24,6 +26,7 @@ class Blueprint extends BaseController
         $this->loadViews("admin/question/list", $this->global, NULL , NULL);
         
     }
+
 
     // Add New 
     public function addnew()
@@ -67,11 +70,30 @@ class Blueprint extends BaseController
         $data['class_data'] = $this->classes_model->findDynamic($where);
         $data['class_name'] = $data['class_data'][0]->student_class_name;
 
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_class_name';
+        $data['studentClassName'] = $this->classes_model->findDynamic($where);
 
-         
-        /*$blueprintId = $this->uri->segment(4);
-        $this->load->model('Question_model');
-        $data['blueprintIds'] = $this->Question_model->getBlueprintIds($blueprintId);*/
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_sections_name';
+        $data['studentSectionName'] = $this->classes_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_name';
+        $data['subject_name'] = $this->subject_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_code';
+        $data['subject_code'] = $this->subject_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'term';
+        $where['field'] = 'term_name';
+        $data['term_name'] = $this->terms_model->findDynamic($where);
 
 
          
@@ -83,6 +105,41 @@ class Blueprint extends BaseController
         $data['edit_data'] = $this->blueprint_model->find($id);
         $this->global['pageTitle'] = 'Website Name : Add New';
         $this->loadViews("admin/question/addblueprint", $this->global, $data , NULL);
+        
+    } 
+
+
+     public function view($id = NULL)
+    {
+        $this->isLoggedIn();
+
+        
+        $where = array();
+        $where['table'] = 'settings';
+        $data['schoolDetails'] = $this->settings_model->findDynamic($where);
+
+
+        $where = array();
+        $where['table'] = 'subject';
+        $data['subject_data'] = $this->subject_model->findDynamic($where);
+        $data['subject_name'] = $data['subject_data'][0]->subject_name;
+        $data['subject_code'] = $data['subject_data'][0]->subject_code;
+
+        $where = array();
+        $where['table'] = 'classes';
+        $data['class_data'] = $this->classes_model->findDynamic($where);
+        $data['class_name'] = $data['class_data'][0]->student_class_name;
+
+
+         
+        $blueprintId = $this->uri->segment(4);
+        $data['question_data'] = $this->question_model->getQuestionsByBlueprintId($blueprintId);
+        
+
+
+        $data['edit_data'] = $this->blueprint_model->find($id);
+        $this->global['pageTitle'] = 'Website Name : Add New';
+        $this->loadViews("admin/question/view", $this->global, $data , NULL);
         
     } 
 
@@ -260,6 +317,40 @@ class Blueprint extends BaseController
         $data['edit_data'] = $this->question_model->find($id);
         $this->global['pageTitle'] = 'Website Name : Edit Data';
         $this->loadViews("admin/question/editquestion", $this->global, $data , NULL);
+        
+        
+    } 
+
+
+      public function addmarks($id = NULL)
+    {
+        
+        //exit;
+        $this->isLoggedIn();
+        if($id == null)
+        {
+            redirect('admin/dashboard');
+        }
+
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_class_name';
+        $data['studentClassName'] = $this->classes_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_name';
+        $data['subject_name'] = $this->subject_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_code';
+        $data['subject_code'] = $this->subject_model->findDynamic($where);
+
+        
+        $data['edit_data'] = $this->question_model->find($id);
+        $this->global['pageTitle'] = 'Website Name : Edit Data';
+        $this->loadViews("admin/question/addmarks", $this->global, $data , NULL);
         
         
     } 
