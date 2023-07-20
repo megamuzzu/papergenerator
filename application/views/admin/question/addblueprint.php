@@ -11,8 +11,9 @@
          </ol>
       </nav>
       <div style="margin-bottom: 20px;">
-         <a href="<?php echo base_url().'admin/blueprint/uploadblueprint/'.$question_data[0]['blueprint_id']; ?>" class="btn btn-primary mt-3">Import Questions</a>
+         <a href="<?php echo base_url().'admin/blueprint/uploadblueprint/'; ?>" class="btn btn-primary mt-3">Import Questions</a>
       </div>
+
    </div>
    <!-- End Page Title -->
    <section class="section">
