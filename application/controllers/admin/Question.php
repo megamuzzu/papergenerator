@@ -10,6 +10,7 @@ class Question extends BaseController
         parent::__construct();
         $this->load->model('admin/blueprint_model');
         $this->load->model('admin/question_model');
+        $this->load->library('csvimport');
     }
 
     /**
@@ -194,12 +195,6 @@ class Question extends BaseController
              $insertData['answer_picture_true'] = $form_data['answer_picture_true'];
              $insertData['answer_picture_false'] = $form_data['answer_picture_false'];
 
-
-            
-
-
-                $insertData['marks'] = $form_data['marks'];
-
                 $insertData['status'] = $form_data['status'];
                 $insertData['date_by']      = date('Y-m-d');
 
@@ -216,6 +211,146 @@ class Question extends BaseController
           }  
         
     }
+
+
+   function import()
+    {
+        $file_data = $this->csvimport->get_array($_FILES["csv_file"]["tmp_name"]);
+        foreach($file_data as $row)
+        {
+
+        $tf_picture_url = $row["tf_picture_question"];
+        $uploaded_filename = '';
+
+        // Check if the image URL is provided in the CSV
+        if (!empty($tf_picture_url)) {
+            // Get the image content from the URL
+            $image_content = file_get_contents($tf_picture_url);
+
+            // Generate a unique name for the picture to avoid conflicts
+            $uploaded_filename = time() . '_' . basename($tf_picture_url);
+
+            // Save the image to the 'uploads/questiontf' folder
+            $destination_path = FCPATH . 'uploads/questiontf/' . $uploaded_filename;
+            file_put_contents($destination_path, $image_content);
+        }
+
+
+        $mcq_picture_one = $row["mcq_picture_one"];
+        $uploaded_filename_mcq_one = '';
+
+        // Check if the image URL is provided in the CSV
+        if (!empty($mcq_picture_one)) {
+            // Get the image content from the URL
+            $image_content = file_get_contents($mcq_picture_one);
+
+            // Generate a unique name for the picture to avoid conflicts
+            $uploaded_filename_mcq_one = time() . '_' . basename($mcq_picture_one);
+
+            // Save the image to the 'uploads/questiontf' folder
+            $destination_path = FCPATH . 'uploads/questiomcq/' . $uploaded_filename_mcq_one;
+            file_put_contents($destination_path, $image_content);
+        }
+
+
+        $mcq_picture_two = $row["mcq_picture_two"];
+        $uploaded_filename_mcq_two = '';
+
+        // Check if the image URL is provided in the CSV
+        if (!empty($mcq_picture_two)) {
+            // Get the image content from the URL
+            $image_content = file_get_contents($mcq_picture_two);
+
+            // Generate a unique name for the picture to avoid conflicts
+            $uploaded_filename_mcq_two = time() . '_' . basename($mcq_picture_two);
+
+            // Save the image to the 'uploads/questiontf' folder
+            $destination_path = FCPATH . 'uploads/questiomcq/' . $uploaded_filename_mcq_two;
+            file_put_contents($destination_path, $image_content);
+        }
+
+
+        $mcq_picture_three = $row["mcq_picture_three"];
+        $uploaded_filename_mcq_three = '';
+
+        // Check if the image URL is provided in the CSV
+        if (!empty($mcq_picture_three)) {
+            // Get the image content from the URL
+            $image_content = file_get_contents($mcq_picture_three);
+
+            // Generate a unique name for the picture to avoid conflicts
+            $uploaded_filename_mcq_three = time() . '_' . basename($mcq_picture_three);
+
+            // Save the image to the 'uploads/questiontf' folder
+            $destination_path = FCPATH . 'uploads/questiomcq/' . $uploaded_filename_mcq_three;
+            file_put_contents($destination_path, $image_content);
+        }
+        
+
+        $mcq_picture_four = $row["mcq_picture_four"];
+        $uploaded_filename_mcq_four = '';
+
+        // Check if the image URL is provided in the CSV
+        if (!empty($mcq_picture_four)) {
+            // Get the image content from the URL
+            $image_content = file_get_contents($mcq_picture_four);
+
+            // Generate a unique name for the picture to avoid conflicts
+            $uploaded_filename_mcq_four = time() . '_' . basename($mcq_picture_four);
+
+            // Save the image to the 'uploads/questiontf' folder
+            $destination_path = FCPATH . 'uploads/questiomcq/' . $uploaded_filename_mcq_four;
+            file_put_contents($destination_path, $image_content);
+        }
+
+
+
+                 
+
+            $data[] = array(
+                'question_paper_name'  =>$row["question_paper_name"],
+                'subject_name'  =>$row["subject_name"],
+                'subject_code'  =>$row["subject_code"],
+                'blueprint_id'  =>$row["blueprint_id"],
+                'question_type'  =>$row["question_type"],
+                'question_fitb'  =>$row["question_fitb"],
+                'answer_fitb'  =>$row["answer_fitb"],
+                'question_qa'  =>$row["question_qa"],
+                'answer_qa'  =>$row["answer_qa"],
+                'question_tf'  =>$row["question_tf"],
+                'answer_true'  =>$row["answer_true"],
+                'answer_false'  =>$row["answer_false"],
+                'question_mcq'  =>$row["question_mcq"],
+                'answer_mcq_one'  =>$row["answer_mcq_one"],
+                'answer_mcq_two'  =>$row["answer_mcq_two"],
+                'answer_mcq_three'  =>$row["answer_mcq_three"],
+                'answer_mcq_four'  =>$row["answer_mcq_four"],
+                'question_picture_mcq'  =>$row["question_picture_mcq"],
+                'mcq_picture_one'  =>$uploaded_filename_mcq_one,
+                'mcq_picture_two'  =>$uploaded_filename_mcq_two,
+                'mcq_picture_three'  =>$uploaded_filename_mcq_three,
+                'mcq_picture_four'  =>$uploaded_filename_mcq_four,
+                'tf_picture_question' => $uploaded_filename,
+                'answer_picture_true'  =>$row["answer_picture_true"],
+                'answer_picture_false'  =>$row["answer_picture_false"],
+                'status'  =>$row["status"],
+                'date_by'  =>$row["date_by"],
+                'update_by'  =>$row["update_by"],
+                'teacher_id'  =>$row["teacher_id"],
+                'marks'  =>$row["marks"],
+                'term'  =>$row["term"],
+                'sub_name'  =>$row["sub_name"],
+                'sub_code'  =>$row["sub_code"],
+                'class_name'  =>$row["class_name"],
+                'class_sec'  =>$row["class_sec"],
+                'duration'  =>$row["duration"]
+            );
+        }
+       $this->question_model->insert($data);
+    }
+
+
+
 
 
     // Member list

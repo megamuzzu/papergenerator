@@ -1,5 +1,54 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+           
+        .header-school {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .question {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .marks {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .options {
+            margin-left: 20px;
+            list-style-type: lower-alpha;
+            padding-left: 0;
+        }
+        
+        .answer {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+           .header-details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-details h6 {
+            margin: 0;
+        }
+      
+    </style>
 <main id="main" class="main">
    <section class="section dashboard">
       <div class="row">
@@ -15,17 +64,21 @@
                            {
                                $logo = $value->logo  != null ? $value->logo: 'School Logo';
                            ?>
-                        <div class="school_details">
-                           <img src="<?php echo base_url()?>uploads/school/<?php echo $logo?>" style="width: 100px;">
-                           <h4 class="mt-2"><?php echo $value->school_name;?></h4>
-                           <p><?php echo $value->email_id;?></p>
-                           <p><?php echo $value->phone_no;?></p>
-                           <p><?php echo $value->address;?></p>
-                        </div>
+                         <div class="header-school">
+                                 <h1><?php echo $value->school_name;?></h1>
+                           </div>
                         <?php
                            }
                            
                                ?>
+
+                          
+
+
+                  
+
+
+
                                <?php
                                $first_iteration = true;
                                foreach ($question_data as $key => $value)
@@ -33,21 +86,16 @@
                                       
                                  ?>
 
-                                      <div class="question-area">
-                           <div class="header-question">
-                              <div class="row">
-                                 <div class="col-sm-6">
-                                    <h4>School Term :  <?php echo $value['term'] ?></h4>
+                         <div class="header-school">
+                                 <h4>School Term :  <?php echo $value['term'] ?></h4>
+                                 <h6>Subject: <?php echo $value['sub_name'] ?> -  <?php echo $value['sub_code'] ?></h6>
+                                 <div class="header-details">
+                                    <h6>Class: <?php echo $value['class_name'] ?> - <?php echo $value['class_sec'] ?></h6>
+                                    <h6>Time: <?php echo $value['dura'] ?> Mins</h6>
                                  </div>
-                                 <div class="col-sm-6">
-                                    <h4 style="float: right;">Duration :  <?php echo $value['duration'] ?> Mins</h4>
-                                 </div>
-                              </div>
-                              <div class="subject-details">
-                                 <h4> <?php echo $value['sub_name'] ?> -  <?php echo $value['sub_code'] ?></h4>
-                              </div>
                            </div>
-                        </div>
+
+
 <?php 
 
    if ($first_iteration) {
@@ -58,6 +106,35 @@
 
 }
                      ?>
+
+
+         <div class="section">
+        <div class="section-title">Section A: Multiple Choice Questions</div>
+        <div class="question">
+            <span>1. What is the square root of 64?</span>
+           <span class="marks">2 marks</span>
+        </div>
+        <ul class="options">
+            <li>a) 4</li>
+            <li>b) 8</li>
+            <li>c) 16</li>
+            <li>d) 10</li>
+        </ul>
+        <div class="answer">Answer: a) 4</div>
+        
+        <div class="question">
+            
+            <span>2. Which of the following is a prime number?</span>
+<span class="marks">3 marks</span>
+        </div>
+        <ul class="options">
+            <li>a) 20</li>
+            <li>b) 31</li>
+            <li>c) 50</li>
+            <li>d) 15</li>
+        </ul>
+        <div class="answer">Answer: b) 31</div>
+    </div>
 
                        
                         <div class="questionBox">

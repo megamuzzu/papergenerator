@@ -203,5 +203,11 @@ class Question_model extends Base_model
     }
 }
 
+    function insert($data)
+    {
+        $this->db->insert_batch('questions', $data);
+    }
+
+
 
 }

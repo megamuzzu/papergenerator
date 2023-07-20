@@ -10,6 +10,9 @@
             <li class="breadcrumb-item active"><a href="<?php echo base_url()?>admin/blueprint">Question Blueprint</a></li>
          </ol>
       </nav>
+      <div style="margin-bottom: 20px;">
+         <a href="<?php echo base_url().'admin/blueprint/uploadblueprint/'.$question_data[0]['blueprint_id']; ?>" class="btn btn-primary mt-3">Import Questions</a>
+      </div>
    </div>
    <!-- End Page Title -->
    <section class="section">
@@ -326,18 +329,32 @@
                         ?>
                      </div>
                         <div class="col-sm-8">
+                           <?php if (!empty($value['question_fitb'])): ?>
                               <span class="math-tex">
                                  <?php echo $value['question_fitb']; ?>
                               </span>
+                           <?php endif; ?>
+
+                           <?php if (!empty($value['question_qa'])): ?>
                               <span class="math-tex">
-                              <?php echo $value['question_qa'] ?>
-                           </span>
+                                 <?php echo $value['question_qa']; ?>
+                              </span>
+                           <?php endif; ?>
+
+                           <?php if (!empty($value['question_tf'])): ?>
                               <span class="math-tex">
-                              <?php echo $value['question_tf'] ?>
-                           </span>
-                           <span class="math-tex">
-                              <?php echo $value['question_mcq'] ?>
-                           </span>
+                                 <?php echo $value['question_tf']; ?>
+                              </span>
+                           <?php endif; ?>
+
+                           <?php if (!empty($value['question_mcq'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['question_mcq']; ?>
+                              </span>
+                           <?php endif; ?>
+                            
+                               
+                              
 
                               <?php $tf_picture_question = $value['tf_picture_question'];
 
@@ -346,10 +363,13 @@
                               }
 
                                ?>
-                               <span class="math-tex">
-                               <?php echo $value['question_picture_mcq'] ?>
-                            </span>
 
+
+                              <?php if (!empty($value['question_picture_mcq'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['question_picture_mcq']; ?>
+                              </span>
+                              <?php endif; ?>
 
                            </div>
 
@@ -371,51 +391,88 @@
                      <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Note : </label>
                         <div class="col-sm-10">
-                           <span class="math-tex">
-                              <?php echo $value['answer_fitb'] ?>
-                           </span>
-                           <span class="math-tex">
-                              <?php echo $value['answer_qa'] ?>
-                           </span>
-                           <span class="math-tex">
-                              <?php echo $value['answer_true'] ?>
-                           </span>
-                           <br>
-                           <span class="math-tex">
-                              <?php echo $value['answer_false'] ?>
-                           </span>
 
+                           <?php if (!empty($value['answer_fitb'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_fitb']; ?>
+                              </span>
+                              <?php endif; ?>
 
-                           <span class="math-tex">
-                              <?php echo $value['answer_mcq_one'] ?>
-                           </span>
-                           <br>
-                           <span class="math-tex">
-                              <?php echo $value['answer_mcq_two'] ?>
-                           </span>
-                           <br>
-                           <span class="math-tex">
-                              <?php echo $value['answer_mcq_three'] ?>
-                           </span>
-                           <br>
-                           <span class="math-tex">
-                              <?php echo $value['answer_mcq_four'] ?>
-                           </span>
+                           <?php if (!empty($value['answer_qa'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_qa']; ?>
+                              </span>
+                              <?php endif; ?>
+
+                            <?php if (!empty($value['answer_true'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_true']; ?>
+                              </span>
+                              <br>
+                              <?php endif; ?>
                            
 
+                           <?php if (!empty($value['answer_false'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_false']; ?>
+                              </span>
+                           <?php endif; ?>
+
+
+                           <?php if (!empty($value['answer_mcq_one'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_mcq_one']; ?>
+                              </span>
+                              <br>
+                           <?php endif; ?>
                            
-                           <span class="math-tex">
-                              <?php echo $value['answer_picture_true'] ?>
-                           </span>
-                           <br>
-                           <span class="math-tex">
-                              <?php echo $value['answer_picture_false'] ?>
-                           </span>
+
+                           <?php if (!empty($value['answer_mcq_two'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_mcq_two']; ?>
+                              </span>
+                               <br>
+                           <?php endif; ?>
+
+                          
+
+                           <?php if (!empty($value['answer_mcq_three'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_mcq_three']; ?>
+                              </span>
+                              <br>
+                           <?php endif; ?>
+
+                           <?php if (!empty($value['answer_mcq_four'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_mcq_four']; ?>
+                              </span>
+                           <?php endif; ?>
+
+                           <?php if (!empty($value['answer_mcq_four'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_mcq_four']; ?>
+                              </span>
+                           <?php endif; ?>
+
+                           <?php if (!empty($value['answer_picture_true'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_picture_true']; ?>
+                              </span>
+                              <br>
+                           <?php endif; ?>                
+
+                           <?php if (!empty($value['answer_picture_false'])): ?>
+                              <span class="math-tex">
+                                 <?php echo $value['answer_picture_false']; ?>
+                              </span>
+                           <?php endif; ?> 
+            
 
                                <?php $mcq_picture_one = $value['mcq_picture_one'];
 
                                if (!empty($mcq_picture_one)) {
-                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_one . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
+                                     echo  '(a)  <img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_one . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
                               }
 
                                ?> 
@@ -423,7 +480,7 @@
                                 <?php $mcq_picture_two = $value['mcq_picture_two'];
 
                                if (!empty($mcq_picture_two)) {
-                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_two . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
+                                     echo '(b)  <img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_two . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
                               }
 
                                ?>  
@@ -431,7 +488,7 @@
                                <?php $mcq_picture_three = $value['mcq_picture_three'];
 
                                if (!empty($mcq_picture_three)) {
-                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_three . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
+                                     echo '(c)  <img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_three . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
                               }
 
                                ?> 
@@ -439,7 +496,7 @@
                                 <?php $mcq_picture_four = $value['mcq_picture_four'];
 
                                if (!empty($mcq_picture_four)) {
-                                     echo '<img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_four . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
+                                     echo '(d)  <img src="' . base_url() . 'uploads/questiomcq/' . $mcq_picture_four . '" alt="Answer MCQ Picture" style="width: 100px;margin-top:10px;margin-bottom:10px;"><br>';
                               }
 
                                ?>

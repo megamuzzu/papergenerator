@@ -14,6 +14,7 @@ class Blueprint extends BaseController
         $this->load->model('admin/question_model');
         $this->load->model('admin/settings_model');
         $this->load->model('admin/terms_model');
+        $this->load->helper('form');
     }
 
     /**
@@ -107,6 +108,61 @@ class Blueprint extends BaseController
         $this->loadViews("admin/question/addblueprint", $this->global, $data , NULL);
         
     } 
+
+    public function uploadblueprint($id = NULL)
+    {
+        $this->isLoggedIn();
+
+             
+
+        $where = array();
+        $where['table'] = 'subject';
+        $data['subject_data'] = $this->subject_model->findDynamic($where);
+        $data['subject_name'] = $data['subject_data'][0]->subject_name;
+        $data['subject_code'] = $data['subject_data'][0]->subject_code;
+
+        $where = array();
+        $where['table'] = 'classes';
+        $data['class_data'] = $this->classes_model->findDynamic($where);
+        $data['class_name'] = $data['class_data'][0]->student_class_name;
+
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_class_name';
+        $data['studentClassName'] = $this->classes_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'classes';
+        $where['field'] = 'student_sections_name';
+        $data['studentSectionName'] = $this->classes_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_name';
+        $data['subject_name'] = $this->subject_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'subject';
+        $where['field'] = 'subject_code';
+        $data['subject_code'] = $this->subject_model->findDynamic($where);
+
+        $where = array();
+        $where['table'] = 'term';
+        $where['field'] = 'term_name';
+        $data['term_name'] = $this->terms_model->findDynamic($where);
+
+
+         
+        $blueprintId = $this->uri->segment(4);
+        $data['question_data'] = $this->question_model->getQuestionsByBlueprintId($blueprintId);
+        
+
+
+        $data['edit_data'] = $this->blueprint_model->find($id);
+        $this->global['pageTitle'] = 'Website Name : Add New';
+        $this->loadViews("admin/question/uploadblueprint", $this->global, $data , NULL);
+        
+    }
 
 
      public function view($id = NULL)
